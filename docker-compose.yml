@@ -1,0 +1,26 @@
+version: '3'
+services:
+    web:
+        build: ./web-service
+        restart: always
+        volumes:
+            - recordings:/var/www/html/videos
+        hostname: web-host
+        ports:
+            - "8080:80"
+        networks:
+            - default
+    ingest:
+        image: eledev/stream-ingest:latest
+        restart: always
+        volumes:
+            - recordings:/mnt/recordings
+        hostname: ingest-host
+        ports:
+            - "8081:8080"
+            - "1935:1935"
+        networks:
+            - default
+            
+volumes:
+    recordings:
