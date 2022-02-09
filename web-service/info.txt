@@ -1,0 +1,5 @@
+This folder contains the docker image of the webservice.
+The webservice includes all visible parts of the software stack
+e.g. the frontend, video clip, history, live stream player, admin webinterface, etc.
+This image is based on an apache2 webserver paired with php7
+the webroot directory contains the source code of the webapp and is necessary to build the image

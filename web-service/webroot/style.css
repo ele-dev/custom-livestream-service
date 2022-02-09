@@ -1,0 +1,36 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table {
+	width: 70%;
+}
+
+th {
+	border-bottom: solid 2px black;
+}
+
+th, td {
+	text-align: center;
+	color: black;
+	min-width: 10em;
+	height: 2.5em;
+}
+
+tr.white {
+	background-color: white;
+	border-bottom: 1px solid black;
+}
+
+tr.grey {
+	background-color: lightgrey;
+}
+
+#status-bar {
+	margin: 2em;
+}
