@@ -7,13 +7,19 @@ It should be mentioned that it is designed to be deployed behind a Reverse Proxy
 handle SSL Termination. So no certificate management or encryption at all is implemented here.
 
 Build the application with:
+```shell
 docker-compose build 
+```
 
 Then run it in background with:
+```shell
 docker-compose up -d 
+```
 
 Stop it with:
+```shell
 docker-compose down
+```
 
 By default the ports are configured as follows
   - 1935: RTMP ingestion
