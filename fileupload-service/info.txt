@@ -1,0 +1,5 @@
+This folder contains the docker image for the sftp file access functionality 
+to allow video clip uploads.
+It is a simple file server with access to the shared docker volume where the 
+recorded and video clips are stored
+>> coming soon
