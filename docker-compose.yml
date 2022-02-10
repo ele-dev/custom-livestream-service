@@ -21,6 +21,16 @@ services:
             - "1935:1935"
         networks:
             - default
+    fileaccess:
+        build: ./fileupload-service
+        restart: always
+        volumes:
+            - recordings:/home/clip-manager
+        hostname: file-host
+        ports:
+            - "2222:22"
+        networks:
+            - default
             
 volumes:
     recordings:
