@@ -3,21 +3,26 @@
     /*
         This script defines a class that describes a video clip 
         and it's relevant attributes
-
-        Future use
     */
 
     class VideoClip
     {
+        // Static properties
+        private static $clipList;
+
+        // Attributes
         private $filename = "";
         private $dateStr = "";
         private $timeStr = "";
         private $weekDay = "";
         private $fileSize = 0;
 
+        // Constructor
         public function __construct($path)
         {
+            // Store the filename
             $this->filename = basename($path);
+
             // extract date and time from filename and store it
             $temp = explode(".", $path);
             $this->dateStr = str_replace("-", ".", $temp[1]);
@@ -28,6 +33,7 @@
             $this->fileSize = round(filesize($path) / 1000000);
         }
 
+        // Getters
         public function getFilename()
         {
             return $this->filename;
@@ -70,6 +76,48 @@
                 return "Freitag";
             else 
                 return "Samstag";
+        }
+
+        // Static functions
+        public static function createClipList($clipDir)
+        {
+            $filePaths = glob($clipDir);
+            for($i = 0; $i < count($filePaths); $i++)
+            {
+                self::$clipList[$i] = new VideoClip($filePaths[$i]);
+            }
+        }
+
+        public static function printClipList()
+        {
+            for($i = 0; $i < count(self::$clipList); $i++)
+            {
+                // Get current clip
+                $clip = self::$clipList[$i];
+
+                // Print the formatted HTML table row
+                if(($i+2) % 2 != 0) {
+                    echo "<tr class='white'><td>" . $clip->getWeekday() . "</td><td>" 
+                        . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
+                        . $clip->getFilesize() . " MB</td><td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
+                        . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
+                        <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
+                        . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td></tr>";
+                } else {
+                    echo "<tr class='grey'><td>" . $clip->getWeekday() . "</td><td>" 
+                    . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
+                    . $clip->getFilesize() . " MB</td><td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
+                    . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
+                    <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
+                    . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td></tr>";
+                }
+            }
+        }
+
+        public static function sortClips()
+        {
+            // Sort the clips in the list by the date and time of recording (using bubble sort)
+            // coming soon ...
         }
     }
 
