@@ -99,14 +99,14 @@
                 if(($i+2) % 2 != 0) {
                     echo "<tr class='white'><td>" . $clip->getWeekday() . "</td><td>" 
                         . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
-                        . $clip->getFilesize() . " MB</td><td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
+                        . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                         . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
                         <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
                         . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td></tr>";
                 } else {
                     echo "<tr class='grey'><td>" . $clip->getWeekday() . "</td><td>" 
                     . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
-                    . $clip->getFilesize() . " MB</td><td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
+                    . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                     . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
                     <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
                     . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td></tr>";
