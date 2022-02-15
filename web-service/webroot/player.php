@@ -37,9 +37,6 @@
 
 		</center>
 
-		<script src="video.min.js"></script>
-		<script src="js/status.js"></script>
-
 	</body>
 	
 </html>
