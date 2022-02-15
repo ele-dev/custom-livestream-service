@@ -117,7 +117,27 @@
         public static function sortClips()
         {
             // Sort the clips in the list by the date and time of recording (using bubble sort)
-            // coming soon ...
+            do 
+            {
+                $done = true;
+                for($i = 0; $i < count(self::$clipList) - 1; $i++)
+                {
+                    // create two timestamps
+                    $timestamp1 = strtotime(self::$clipList[$i]->getRecordDate() . " " . self::$clipList[$i]->getRecordTime());
+                    $timestamp2 = strtotime(self::$clipList[$i+1]->getRecordDate() . " " . self::$clipList[$i+1]->getRecordTime());
+                    
+                    // check if the order is correct
+                    if($timestamp2 > $timestamp1) {
+                        // swap the two entries
+                        $t2 = self::$clipList[$i+1];
+                        $t1 = self::$clipList[$i];
+                        self::$clipList[$i] = $t2;
+                        self::$clipList[$i+1] = $t1;
+
+                        $done = false;
+                    }
+                }
+            } while(!$done);
         }
     }
 
