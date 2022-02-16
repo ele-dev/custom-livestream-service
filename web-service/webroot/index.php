@@ -16,10 +16,16 @@
 	
 	<body>
 		<p id="status-bar">
-			<a href='live.php'>
-				<i id="live-indicator" class="fas fa-broadcast-tower" style="color:grey;font-size:25px;"></i>
-			</a>
-			<b><span id="statusLabel"> ... </span><a href='live.php'>Live Stream</a></b>
+			<?php 
+				require_once 'php/config.php';
+				if(EnvGlobals::isLive()) {
+					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
+					echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b>";
+				} else {
+					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
+					echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
+				}
+			?>
 		</p>
 		<center>
 		<div id="video-list">
