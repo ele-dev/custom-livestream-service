@@ -88,7 +88,7 @@
             }
         }
 
-        public static function printClipList()
+        public static function printClipList($privileged)
         {
             for($i = 0; $i < count(self::$clipList); $i++)
             {
@@ -102,14 +102,22 @@
                         . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                         . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
                         <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
-                        . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td></tr>";
+                        . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                        if($privileged) {
+                            echo "<td>coming</td>";
+                        }
+                        echo "</tr>";
                 } else {
                     echo "<tr class='grey'><td>" . $clip->getWeekday() . "</td><td>" 
                     . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
                     . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                     . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
                     <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
-                    . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td></tr>";
+                    . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                    if($privileged) {
+                        echo "<td>coming</td>";
+                    }
+                    echo "</tr>";
                 }
             }
         }

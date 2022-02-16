@@ -90,7 +90,7 @@ function updateVideoList()
 		}
 	};
 	
-	xhttp.open("GET", "php/pullVideoList.php?q=" + Math.random(), true);
+	xhttp.open("GET", "php/pullVideoList.php?q=" + Math.random().toString() + "&priv=no", true);
 	xhttp.send();
 }
 

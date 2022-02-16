@@ -1,4 +1,27 @@
 <!DOCTYPE html>
+
+<?php 
+	session_start();
+
+	// redirect if already/still logged in
+	if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+		header("Location: admin.php");
+		exit;
+	}
+
+	require 'php/config.php';
+
+	// check if login credential parameters were passed
+	if(isset($_POST['user']) && isset($_POST['password'])) {
+		// Attempt to login
+		if(EnvGlobals::validateLogin($_POST['user'], $_POST['password']) == true) {
+			$_SESSION['loggedIn'] = true;
+			header("Location: admin.php");
+			exit;
+		}
+	}
+?>
+
 <html lang="de">
 
 	<head>
@@ -12,7 +35,6 @@
 	</head>
 	
 	<body>
-		<p><a href="index.php">Zurück zur Startseite</a></p>
 
 		<center>
 		<H1> Verwaltung Login </H1>
