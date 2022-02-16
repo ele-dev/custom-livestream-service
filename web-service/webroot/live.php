@@ -19,7 +19,7 @@
 		<H4>Zuschauerzahl: <span id="viewerCount">...</span></H4>		
 		<div id="player-box">
 			<?php 
-				require 'php/config.php';
+				require_once 'php/config.php';
 
 				// Only show video player when live stream is active (detected by an existing HLS playlist file .m3u8)
 				if(EnvGlobals::isLive() == true) {
@@ -32,7 +32,7 @@
 		</div>
 
 		<!-- include footer with impressum link and more -->
-		<?php require 'php/footer.php'; ?>
+		<?php require_once 'php/footer.php'; ?>
 
 		</center>
 

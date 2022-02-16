@@ -23,7 +23,7 @@
 					exit;
 				}
 
-				require 'php/config.php';
+				require_once 'php/config.php';
 
 				// Display the video player
 				echo "<video width='1280' height='720' type='video/mp4' src='" . htmlspecialchars("videos/" . $_GET['name']) . "' controls>";
@@ -33,7 +33,7 @@
 		</div>
 
 		<!-- include footer with impressum link and more -->
-		<?php require 'php/footer.php'; ?>
+		<?php require_once 'php/footer.php'; ?>
 
 		</center>
 

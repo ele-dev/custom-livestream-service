@@ -6,7 +6,7 @@
 		format pattern: <key>::<value>::<key>::<value>:: ...
 	*/
 
-	require 'config.php';
+	require_once 'config.php';
 	
 	echo "livestream::";
 	if(EnvGlobals::isLive() == true) {

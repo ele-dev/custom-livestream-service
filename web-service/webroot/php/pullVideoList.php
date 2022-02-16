@@ -6,7 +6,7 @@
 	*/
 
 	// include the video clip class
-	require 'videoClipClass.php';
+	require_once 'videoClipClass.php';
 
 	function displayVideoClipList($privileged)
 	{

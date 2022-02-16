@@ -24,7 +24,7 @@
 		<center>
 		<div id="video-list">
 			<?php
-				require 'php/pullVideoList.php';
+				require_once 'php/pullVideoList.php';
 				displayVideoClipList(false);
 			?>
 		</div>
@@ -33,7 +33,7 @@
 		<script src="js/status.js"></script>
 
 		<!-- include footer with impressum link and more -->
-		<?php require 'php/footer.php'; ?>
+		<?php require_once 'php/footer.php'; ?>
 
 		</center>
 	</body>

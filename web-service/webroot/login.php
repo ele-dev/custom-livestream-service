@@ -47,7 +47,7 @@
 		</div>
 
 		<!-- include footer with impressum link and more -->
-		<?php require 'php/footer.php'; ?>
+		<?php require_once 'php/footer.php'; ?>
 
 		</center>
 
