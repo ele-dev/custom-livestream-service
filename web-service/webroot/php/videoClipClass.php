@@ -37,13 +37,18 @@
 
         public function changeRecordDate($newDate) 
         {
+            // Prevent unauthorized access
+	        if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
+		        return false;
+	        }
+
             // Split current filename into segments and abort if segment count is invalid
             $temp = explode(".", $this->filename);
             if(count($temp) != 4) {
                 return false;
             }
 
-            // udpated the class members
+            // udpated the class member
             $this->dateStr = date("d.m.Y", $newDate);
 
             // construct new filenames based on the new record date
@@ -61,6 +66,39 @@
 
             return true;
         }
+
+        public function changeRecordTime($newTime) 
+        {
+            // Prevent unauthorized access
+	        if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
+                return false;
+	        }
+
+            // Split current filename into segments and abort if segment count is invalid
+            $temp = explode(".", $this->filename);
+            if(count($temp) != 4) {
+                return false;
+            }
+
+            // udpated the class member
+            $this->timeStr = $newTime;
+
+            // construct new filenames based on the new record date
+            $updatedMp4FileName = $temp[0] . "." . $temp[1] . "." . str_replace(":", "-", $newTime) . ".mp4";
+            $updatedFlvFileName = $temp[0] . "." . $temp[1] . "." . str_replace(":", "-", $newTime) . ".flv";
+
+            // attempt to rename files (mp4 and flv file)
+            $result = rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . $this->filename, $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedMp4FileName);
+            if(!$result) {
+                return false;
+            } else {
+                // Try the potential flv too
+                rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . pathinfo($this->filename, PATHINFO_FILENAME) . ".flv", $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedFlvFileName);
+            }
+
+            return true;
+        }
+
 
         // Getters
         public function getFilename()
