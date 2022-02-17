@@ -5,7 +5,10 @@ A docker-compose software stack for a self hosted live streaming service that al
 In order to get the software working properly you need to check the config.php file in the web-service/webroot/php directory.
 There you must set the correct IP address or Domain of your machine before your run the application. <br />
 For a simple test instance you might use the internal (e.g. 192.168.1.xxx) or even localhost (127.0.0.1) IP address. <br />
-For a production system, a domain with an A Record to your public IP address should be entered here.
+For a production system, a domain with an A Record to your public IP address should be entered here. <br />
+
+Furthermore, admin username and password for the management panel should be configured in
+the same file.
 
 # deployment 
 This software stack requires docker and docker-compose to be installed on the target system.
