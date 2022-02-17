@@ -33,6 +33,35 @@
             $this->fileSize = round(filesize($path) / 1000000);
         }
 
+        // Modifier functions
+
+        public function changeRecordDate($newDate) 
+        {
+            // Split current filename into segments and abort if segment count is invalid
+            $temp = explode(".", $this->filename);
+            if(count($temp) != 4) {
+                return false;
+            }
+
+            // udpated the class members
+            $this->dateStr = date("d.m.Y", $newDate);
+
+            // construct new filenames based on the new record date
+            $updatedMp4FileName = $temp[0] . "." . date("d-m-Y", strtotime($newDate)) . "." . $temp[2] . ".mp4";
+            $updatedFlvFileName = $temp[0] . "." . date("d-m-Y", strtotime($newDate)) . "." . $temp[2] . ".flv";
+
+            // attempt to rename files (mp4 and flv file)
+            $result = rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . $this->filename, $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedMp4FileName);
+            if(!$result) {
+                return false;
+            } else {
+                // Try the potential flv too
+                rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . pathinfo($this->filename, PATHINFO_FILENAME) . ".flv", $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedFlvFileName);
+            }
+
+            return true;
+        }
+
         // Getters
         public function getFilename()
         {
@@ -103,9 +132,15 @@
                         . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
                         <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
                         . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                        // only visible to privileged people (admins)
                         if($privileged) {
+                            // delete option
                             echo "<td><a href='" . htmlspecialchars("php/delete.php?file=" . $clip->getFilename()) 
                             . "'><i class='fas fa-trash-alt' style='color:black;font-size:23px;'></i></a></td>";
+
+                            // modify option
+                            echo "<td><a href='modify.php?file=" . $clip->getFilename() 
+                            . "'><i class='fas fa-wrench' style='color:black;font-size:23px;'></i></a></td>";
                         }
                         echo "</tr>";
                 } else {
@@ -115,9 +150,15 @@
                     . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
                     <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
                     . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                    // only visible to privileged people (admins)
                     if($privileged) {
+                        // delete option
                         echo "<td><a href='" . htmlspecialchars("php/delete.php?file=" . $clip->getFilename()) 
                             . "'><i class='fas fa-trash-alt' style='color:black;font-size:23px;'></i></a></td>";
+
+                        // modify option
+                        echo "<td><a href='modify.php?file=" . $clip->getFilename() 
+                        . "'><i class='fas fa-wrench' style='color:black;font-size:23px;'></i></a></td>";
                     }
                     echo "</tr>";
                 }

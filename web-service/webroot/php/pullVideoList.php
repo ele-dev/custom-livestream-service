@@ -15,6 +15,7 @@
 		echo "<tr><th>Wochentag</th><th>Datum</th><th>Beginn</th><th>Dateigröße</th><th>Anschauen</th><th>Herunterladen</th>";
 		if($privileged) {
 			echo "<th>Löschen</th>";
+			echo "<th>Bearbeiten</th>";
 		}
 		echo "</tr>";
 
