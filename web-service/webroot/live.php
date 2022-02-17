@@ -12,7 +12,7 @@
 	</head>
 	
 	<body>
-		<p><a href="index.php">Zurück zu den Aufnahmen</a></p>
+		<p><a href="php/backToList.php">Zurück zu den Aufnahmen</a></p>
 
 		<center>
 		<H1> Gottesdienst Live Stream </H1>
