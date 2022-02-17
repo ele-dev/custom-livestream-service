@@ -104,7 +104,8 @@
                         <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
                         . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
                         if($privileged) {
-                            echo "<td>coming</td>";
+                            echo "<td><a href='" . htmlspecialchars("php/delete.php?file=" . $clip->getFilename()) 
+                            . "'><i class='fas fa-trash-alt' style='color:black;font-size:23px;'></i></a></td>";
                         }
                         echo "</tr>";
                 } else {
@@ -115,7 +116,8 @@
                     <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
                     . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
                     if($privileged) {
-                        echo "<td>coming</td>";
+                        echo "<td><a href='" . htmlspecialchars("php/delete.php?file=" . $clip->getFilename()) 
+                            . "'><i class='fas fa-trash-alt' style='color:black;font-size:23px;'></i></a></td>";
                     }
                     echo "</tr>";
                 }

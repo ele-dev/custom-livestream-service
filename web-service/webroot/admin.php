@@ -48,7 +48,7 @@
 				displayVideoClipList(true);
 			?>
 		</div>
-	
+
 		<!-- execute script for dynamic content update functionality -->
 		<script src="js/status.js"></script>
 
