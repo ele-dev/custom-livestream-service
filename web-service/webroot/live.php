@@ -8,6 +8,7 @@
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link rel="stylesheet" href="video-js.min.css" />
+		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
 	
@@ -16,7 +17,9 @@
 
 		<center>
 		<H1> Gottesdienst Live Stream </H1>
-		<H4>Zuschauerzahl: <span id="viewerCount">...</span></H4>		
+		<H4>Zuschauerzahl: <span id="viewerCount">...</span></H4>
+		
+		<!-- the box capsels the live stream video player (videoJS) --> 
 		<div id="player-box">
 			<?php 
 				require_once 'php/config.php';
@@ -35,7 +38,8 @@
 		<?php require_once 'php/footer.php'; ?>
 
 		</center>
-
+		
+		<!-- execute scripts for dynamic content update functionality and the videoJS lib -->
 		<script src="video.min.js"></script>
 		<script src="js/status.js"></script>
 

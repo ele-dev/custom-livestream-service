@@ -31,6 +31,7 @@
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link rel="stylesheet" href="video-js.min.css" />
+		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
 	
@@ -39,6 +40,7 @@
 		<center>
 		<H1> Verwaltung Login </H1>
 		<div>
+			<!-- login form --> 
 			<form method='post' action=''>
 				<p><label for='idUser'>Benutzer: </label><input id='idUser' type='text' name='user' /></p>
 				<p><label for='idPassword'>Passwort: </label><input id='idPassword' type='password' name='password' /></p>

@@ -15,8 +15,8 @@
 <html lang="de">
 
 	<!-- This is the administration page, where the list of video clips is displayed -->
-	<!-- From here the admins can delete or clips, change settings and more -->
-	<!-- The status of the livestream and the video clip list are dynamically updated in the background using JS AJAX -->
+	<!-- From here the admins can delete clips, change settings and more -->
+	<!-- The status of the livestream is updated dynamically in the background using JS AJAX -->
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,10 +24,13 @@
 		<title>Gottesdienst Verwaltung</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="style.css">
+		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
 	
 	<body>
+
+		<!-- status bar at the top left to monitor the live stream status -->
 		<p id="status-bar">
 			<?php 
 				require_once 'php/config.php';
@@ -42,6 +45,8 @@
 		</p>
 
 		<center>
+
+		<!-- show the list of video clips with advanced access and options for admins -->
 		<div id="admin-video-list">
 			<?php
 				require_once 'php/pullVideoList.php';
@@ -49,7 +54,7 @@
 			?>
 		</div>
 
-		<!-- execute script for dynamic content update functionality -->
+		<!-- execute script for autorefreshed live stream status display -->
 		<script src="js/status.js"></script>
 
 		<!-- include footer with impressum link and more -->

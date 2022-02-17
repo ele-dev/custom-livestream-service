@@ -11,10 +11,13 @@
 		<title>Gottesdienst Streaming</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="style.css">
+		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
 	
 	<body>
+
+		<!-- status bar at the top left to monitor the live stream status -->
 		<p id="status-bar">
 			<?php 
 				require_once 'php/config.php';
@@ -28,6 +31,8 @@
 			?>
 		</p>
 		<center>
+
+		<!-- show the list of recorded video clips from the past available for download and instant playback --> 
 		<div id="video-list">
 			<?php
 				require_once 'php/pullVideoList.php';

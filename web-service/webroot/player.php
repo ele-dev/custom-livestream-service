@@ -8,6 +8,7 @@
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link rel="stylesheet" href="video-js.min.css" />
+		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
 	
@@ -18,6 +19,7 @@
 		<H1> Gottesdienst Anschauen </H1>
 		<div>
 			<?php 
+				// check the required parameter to select the right video file
 				if(!isset($_GET['name']) || $_GET['name'] == "") {
 					echo "no video clip selected!";
 					exit;
@@ -25,7 +27,7 @@
 
 				require_once 'php/config.php';
 
-				// Display the video player
+				// display the HTML5 video player
 				echo "<video width='1280' height='720' type='video/mp4' src='" . htmlspecialchars("videos/" . $_GET['name']) . "' controls>";
 				echo "Der Browser kann diese Datei nicht abspielen!";
 				echo "</video>";
