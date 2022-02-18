@@ -5,32 +5,35 @@ services:
         restart: always
         volumes:
             - recordings:/var/www/html/videos
-        hostname: web-host
-        ports:
-            - "8080:80"
         networks:
             - default
+            - dmz_net
     ingest:
         image: eledev/stream-ingest:latest
         restart: always
         volumes:
             - recordings:/mnt/recordings
-        hostname: ingest-host
         ports:
-            - "8081:8080"
             - "1935:1935"
+        expose:
+            - "1935"
         networks:
             - default
+            - dmz_net
     fileaccess:
         build: ./fileupload-service
         restart: always
         volumes:
             - recordings:/home/clip-manager
-        hostname: file-host
         ports:
-            - "2222:22"
+            - "2221:22"
         networks:
             - default
+            - dmz_net
             
 volumes:
     recordings:
+
+networks:
+    dmz_net:
+        external: true
