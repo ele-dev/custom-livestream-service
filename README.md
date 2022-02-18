@@ -33,7 +33,7 @@ docker-compose down
 By default the ports are configured as follows
   - 1935: RTMP ingestion
   - 8080: web application 
-  - 8081: direct playback of HLS video feed (e.g. with VLC media player)
-  - 2222: SFTP File access to the recorded video clips
+  - 8081 or 4434: direct playback of HLS video feed (e.g. with VLC media player)
+  - 2221: SFTP File access to the recorded video clips
   
 
