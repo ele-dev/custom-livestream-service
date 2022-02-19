@@ -27,9 +27,10 @@
 
 				// Only show video player when live stream is active (detected by an existing HLS playlist file .m3u8)
 				if(EnvGlobals::isLive() == true) {
-					echo "<video id='live-player' class='video-js vjs-default-skin responsive-video' controls width='1280' height='720' poster='poster.png'>
-							<p class='vjs-no-js'>javascript und HTML5 wird benötigt für Video wiedergabe</p></video>";
+					// show a loading spinner until the actual video player shows up
+					echo "<i id='loadingSpinner' class='fas fa-spinner' style='color:#089bcc;font-size:115px;'></i>";
 				} else {
+					// tell the user that the live stream is offline at the moment
 					echo "<H1>Sendepause</H1>";
 				}
 			?>

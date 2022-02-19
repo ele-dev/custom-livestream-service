@@ -51,7 +51,7 @@ function updateStatus()
 			{
 				// When the live stream starts, show the video player
 				if(lastLiveStatus === "inactive" && liveStatus === "active") {
-					playerBox.innerHTML = "<video id='live-player' class='video-js vjs-default-skin' controls width='1280' height='720' poster='poster.png'></video>";
+					playerBox.innerHTML = "<video id='live-player' class='video-js vjs-default-skin' controls autoplay width='1280' height='720' poster='poster.png'></video>";
 
 					var player = videojs("live-player", {liveui: true});
 					player.src({type: 'application/x-mpegURL', src: streamUrl});

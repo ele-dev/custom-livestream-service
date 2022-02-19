@@ -13,3 +13,9 @@ video.responsive-video
         max-width: 640px;
     }
 }
+
+#loadingSpinner
+{
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
