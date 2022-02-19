@@ -6,6 +6,9 @@
 
     session_start();
 
+    // Set header to avoid caching
+    header("Cache-Control: no-cache, must-revalidate");
+
     // Check if admin is logged in
     if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
         header("Location: ../admin.php");
