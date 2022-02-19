@@ -8,11 +8,11 @@
 
     class EnvGlobals
     {
-        private static $hls_http_stream = "http://192.168.178.82:8081/hls/test.m3u8";
+        private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/test.m3u8";
         private static $vid_player_width = 1280;
         private static $vid_player_height = 720;
         private static $admin_user = "admin";
-        private static $admin_pass = "admin-pass";
+        private static $admin_pass = "admin-password";
 
         public static function isLive()
         {
