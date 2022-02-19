@@ -55,6 +55,7 @@ function updateStatus()
 
 					var player = videojs("live-player", {liveui: true});
 					player.src({type: 'application/x-mpegURL', src: streamUrl});
+					player.fluid(true);
 					player.on('ready', function() {
 						this.addClass('my-example');
 					});
