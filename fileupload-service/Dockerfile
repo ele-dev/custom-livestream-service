@@ -9,7 +9,7 @@ ENV TZ="Europe/Berlin"
 
 RUN useradd -rm -d /home/admin -s /bin/bash -u 1000 admin
 
-RUN echo 'admin:tibet3000' | chpasswd
+RUN echo 'admin:123456' | chpasswd
 
 RUN service ssh start
 
