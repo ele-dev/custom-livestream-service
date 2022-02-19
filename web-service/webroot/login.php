@@ -29,8 +29,8 @@
 		<meta charset='utf-8'>
 		<title>Gottesdienst Verwaltung Login</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="stylesheet" href="video-js.min.css" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link rel="stylesheet" href="styles/video-js.min.css" />
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>

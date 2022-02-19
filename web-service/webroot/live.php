@@ -6,8 +6,9 @@
 		<meta charset='utf-8'>
 		<title>Gottesdienst Livestream</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="stylesheet" href="video-js.min.css" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="styles/player.css" />
+		<link rel="stylesheet" href="styles/video-js.min.css" />
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
@@ -26,7 +27,7 @@
 
 				// Only show video player when live stream is active (detected by an existing HLS playlist file .m3u8)
 				if(EnvGlobals::isLive() == true) {
-					echo "<video id='live-player' class='video-js vjs-default-skin' controls width='1280' height='720' poster='poster.png'>
+					echo "<video id='live-player' class='video-js vjs-default-skin responsive-video' controls width='1280' height='720' poster='poster.png'>
 							<p class='vjs-no-js'>javascript und HTML5 wird benötigt für Video wiedergabe</p></video>";
 				} else {
 					echo "<H1>Sendepause</H1>";

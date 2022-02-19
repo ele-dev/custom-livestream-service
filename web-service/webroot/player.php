@@ -6,8 +6,9 @@
 		<meta charset='utf-8'>
 		<title>Gottesdienst Player</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="stylesheet" href="video-js.min.css" />
+		<link rel="stylesheet" type="text/css" href="styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="styles/player.css" />
+		<link rel="stylesheet" href="styles/video-js.min.css" />
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
@@ -28,7 +29,7 @@
 				require_once 'php/config.php';
 
 				// display the HTML5 video player
-				echo "<video width='1280' height='720' type='video/mp4' src='" . htmlspecialchars("videos/" . $_GET['name']) . "' controls>";
+				echo "<video clas='responsive-video' width='1280' height='720' type='video/mp4' src='" . htmlspecialchars("videos/" . $_GET['name']) . "' controls>";
 				echo "Der Browser kann diese Datei nicht abspielen!";
 				echo "</video>";
 			?>

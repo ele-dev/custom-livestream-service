@@ -1,0 +1,15 @@
+/* design of the video player */
+
+video.responsive-video 
+{
+    max-width: 300px;
+    height: auto;
+}
+
+@media screen and (min-width: 768px)  
+{
+    video.responsive-video 
+    {
+        max-width: 640px;
+    }
+}

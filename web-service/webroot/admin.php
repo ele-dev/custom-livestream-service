@@ -23,7 +23,7 @@
 		<meta charset='utf-8'>
 		<title>Gottesdienst Verwaltung</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="styles/style.css">
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
