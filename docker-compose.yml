@@ -24,7 +24,7 @@ services:
         build: ./fileupload-service
         restart: always
         volumes:
-            - recordings:/home/clip-manager
+            - recordings:/home/admin
         ports:
             - "2221:22"
         networks:

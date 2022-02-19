@@ -7,13 +7,13 @@ RUN apt-get update && \
 
 ENV TZ="Europe/Berlin"
 
-RUN useradd -rm -d /home/clip-manager -s /bin/bash -u 1000 clip-manager
+RUN useradd -rm -d /home/admin -s /bin/bash -u 1000 admin
 
-RUN echo 'clip-manager:123456' | chpasswd
+RUN echo 'admin:tibet3000' | chpasswd
 
 RUN service ssh start
 
-RUN chmod a+wr /home/clip-manager
+RUN chmod a+wr /home/admin
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
