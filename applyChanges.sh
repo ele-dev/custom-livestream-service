@@ -9,6 +9,8 @@
 
 # stop compose stack, rebuild it and then start again
 docker-compose down
+sudo rm -r db-service/db
+mkdir db-service/db
 docker-compose build
 docker-compose up -d
 

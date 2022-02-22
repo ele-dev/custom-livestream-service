@@ -13,6 +13,7 @@ services:
         restart: always
         volumes:
             - ./db-service/init:/docker-entrypoint-initdb.d
+            - ./db-service/db:/var/lib/mysql
         environment:
             MYSQL_USER: dbUser
             MYSQL_PASSWORD: db-pass
