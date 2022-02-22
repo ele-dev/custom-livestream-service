@@ -8,7 +8,7 @@
 
     class EnvGlobals
     {
-        private static $hls_http_stream = "http://<hostIP>:8082/hls/test.m3u8";
+        private static $hls_http_stream = "unset";
 
 	    // For production deploy (behind reverse proxy)
         // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/test.m3u8";
@@ -29,6 +29,18 @@
 
         public static function isLive()
         {
+            // If HLS URL isnt't set yet then fetch it from the database
+            if(self::$hls_http_stream == "unset") {
+
+                $handle = self::getDBConnection();
+
+                $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name = 'hls-url'");
+                $dataset = mysqli_fetch_assoc($result);
+                self::$hls_http_stream = $dataset["value"];
+
+                mysqli_close($handle);
+            }
+
             $result = fopen(self::$hls_http_stream, "rb");
             if($result == false) {
                 return false;
