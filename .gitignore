@@ -1,5 +1,6 @@
 *.mp4
 *.flv
-applyChanges.sh
 private/
+db-service/db/
+db-service/init/*.sql
 
