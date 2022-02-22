@@ -13,8 +13,22 @@
         // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/test.m3u8";
         private static $vid_player_width = 1280;
         private static $vid_player_height = 720;
+        
         private static $admin_user = "admin";
         private static $admin_pass = "admin-password";
+
+        private static $db_host = "dbHost";
+        private static $db_user = "dbUser";
+        private static $db_pass = "db-pass";
+        private static $db_databaseName = "testDB";
+
+        public static function getDBConnection() 
+        {
+            // return mysqli connection handle
+            $dbCon = mysqli_connect(self::$db_host, self::$db_user, self::$db_pass, self::$db_databaseName);
+
+            return $dbCon;
+        }
 
         public static function isLive()
         {
