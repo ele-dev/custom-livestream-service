@@ -1,6 +1,6 @@
 FROM debian:stable-slim
 RUN apt-get update && \
-	apt-get install -y apache2 php libapache2-mod-php tzdata && \
+	apt-get install -y apache2 php libapache2-mod-php php-mysql tzdata && \
 	apt-get clean -y && \
 	rm -r /var/cache/apt /var/lib/apt/lists/*
 ENV TZ="Europe/Berlin"
