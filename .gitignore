@@ -2,5 +2,5 @@
 *.flv
 private/
 db-service/db/
-db-service/init/*.sql
+db-service/init/testDB.sql
 
