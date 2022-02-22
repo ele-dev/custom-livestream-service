@@ -8,14 +8,11 @@
 
     class EnvGlobals
     {
-	private static $hls_http_stream = "http://<hostIP>:8082/hls/test.m3u8";
+        private static $hls_http_stream = "http://<hostIP>:8082/hls/test.m3u8";
 	// For production deploy (behind reverse proxy)
         // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/test.m3u8";
         private static $vid_player_width = 1280;
         private static $vid_player_height = 720;
-        
-        private static $admin_user = "admin";
-        private static $admin_pass = "admin-password";
 
         private static $db_host = "dbHost";
         private static $db_user = "dbUser";
@@ -57,10 +54,55 @@
 
         public static function validateLogin($user, $pass) 
         {
-            if($user == self::$admin_user && $pass == self::$admin_pass) {
-                return true;
+            // check if the credentials match the database entry
+            $handle = self::getDBConnection();
+            
+            $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name LIKE 'admin-user' AND value LIKE '" . htmlspecialchars($user) . "'");
+            // wrong username 
+            if(mysqli_num_rows($result) != 1) {
+                return false;
             }
-            return false;
+
+            $passHash = hash("sha256", $pass);
+            $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name LIKE 'admin-pass-hash' AND value LIKE '" . htmlspecialchars($passHash) . "'");
+            // wrong password
+            if(mysqli_num_rows($result) != 1) {
+                return false;
+            }
+
+            // close the database handle
+            mysqli_close($handle);
+
+            return true;
+        }
+
+        public static function changePassword($oldPass, $newPass)
+        {
+
+            // limit the maximum length of the new password
+            // ...
+
+            // check if the old password is correct if not abort
+            $result = self::validateLogin("admin", $oldPass);
+            if(!$result) {
+                return false;
+            }
+
+            // Get a connection handle
+            $handle = self::getDBConnection();
+
+            // create SHA-256 hashes from the plain text passwords
+            $oldPassHash = hash("sha256", $oldPass);
+            $newPassHash = hash("sha256", $newPass);
+
+            // when correct update the password hash in the database to the new one
+            $updateQuery = "UPDATE tbl_envVar SET value = '" . htmlspecialchars($newPassHash) . "' WHERE name LIKE 'admin-pass-hash'";
+            $result = mysqli_query($handle, $updateQuery);
+
+            // close the database handle
+            mysqli_close($handle);
+            
+            return true;
         }
     }
 ?>
