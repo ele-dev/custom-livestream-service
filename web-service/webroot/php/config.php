@@ -9,11 +9,11 @@
     class EnvGlobals
     {
         private static $hls_http_stream = "http://<hostIP>:8082/hls/test.m3u8";
-	// For production deploy (behind reverse proxy)
+
+	    // For production deploy (behind reverse proxy)
         // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/test.m3u8";
         private static $vid_player_width = 1280;
         private static $vid_player_height = 720;
-
         private static $db_host = "dbHost";
         private static $db_user = "dbUser";
         private static $db_pass = "db-pass";
@@ -58,14 +58,15 @@
             $handle = self::getDBConnection();
             
             $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name LIKE 'admin-user' AND value LIKE '" . htmlspecialchars($user) . "'");
-            // wrong username 
+            // in case of wrong username 
             if(mysqli_num_rows($result) != 1) {
                 return false;
             }
 
+            // generate SHA-256 hash from plain text password
             $passHash = hash("sha256", $pass);
             $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name LIKE 'admin-pass-hash' AND value LIKE '" . htmlspecialchars($passHash) . "'");
-            // wrong password
+            // in case of wrong password
             if(mysqli_num_rows($result) != 1) {
                 return false;
             }
