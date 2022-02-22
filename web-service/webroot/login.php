@@ -9,7 +9,7 @@
 		exit;
 	}
 
-	require 'php/config.php';
+	require_once 'php/config.php';
 
 	// check if login credential parameters were passed
 	if(isset($_POST['user']) && isset($_POST['password'])) {
