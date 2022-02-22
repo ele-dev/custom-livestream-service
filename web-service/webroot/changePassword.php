@@ -1,4 +1,4 @@
-<!doctype HTML>
+<!DOCTYPE HTML>
 
 <?php
     session_start();
@@ -31,7 +31,7 @@
     }
 ?>
 
-<html lang="DE">
+<html lang="de">
 
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
