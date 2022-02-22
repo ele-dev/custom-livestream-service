@@ -30,18 +30,22 @@
 	
 	<body>
 
-		<!-- status bar at the top left to monitor the live stream status -->
-		<p id="status-bar">
-			<?php 
-				require_once 'php/config.php';
-				if(EnvGlobals::isLive()) {
-					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b>";
-				} else {
-					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
-				}
-			?>
+		<p id='menuBar'>
+			<!-- status bar at the top left to monitor the live stream status -->
+			<span id="status-bar">
+				<?php 
+					require_once 'php/config.php';
+					if(EnvGlobals::isLive()) {
+						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
+						echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b>";
+					} else {
+						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
+						echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
+					}
+				?>
+			</span>
+
+			<a href="changePassword.php"><i class="fas fa-user-cog" style="color:black;font-size:25px;"></i> <b>Passwort Ändern</b></a>
 		</p>
 
 		<center>
