@@ -51,6 +51,18 @@
 
         public static function getStreamUrl()
         {
+            // If HLS URL isnt't set yet then fetch it from the database
+            if(self::$hls_http_stream == "unset") {
+
+                $handle = self::getDBConnection();
+
+                $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name = 'hls-url'");
+                $dataset = mysqli_fetch_assoc($result);
+                self::$hls_http_stream = $dataset["value"];
+
+                mysqli_close($handle);
+            }
+
             return self::$hls_http_stream;
         }
 
@@ -110,6 +122,24 @@
 
             // when correct update the password hash in the database to the new one
             $updateQuery = "UPDATE tbl_envVar SET value = '" . htmlspecialchars($newPassHash) . "' WHERE name LIKE 'admin-pass-hash'";
+            $result = mysqli_query($handle, $updateQuery);
+
+            // close the database handle
+            mysqli_close($handle);
+            
+            return true;
+        }
+
+        public static function changeStreamUrl($newHlsUrl)
+        {
+            // Get a connection handle
+            $handle = self::getDBConnection();
+
+            // update the local cached stream url 
+            self::$hls_http_stream = htmlspecialchars($newHlsUrl);
+
+            // then store the new url in the database
+            $updateQuery = "UPDATE tbl_envVar SET value = '" . htmlspecialchars($newHlsUrl) . "' WHERE name LIKE 'hls-url'";
             $result = mysqli_query($handle, $updateQuery);
 
             // close the database handle
