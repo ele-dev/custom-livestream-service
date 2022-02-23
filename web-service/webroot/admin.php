@@ -33,7 +33,7 @@
 		<!-- the main menu bar at the top of the admin panel --> 
 		<p id='menuBar'>
 			<!-- status bar at the top left to monitor the live stream status -->
-			<span id="status-bar">
+			<span id="status-bar" class="menuBarElement">
 				<?php 
 					require_once 'php/config.php';
 					if(EnvGlobals::isLive()) {
@@ -47,10 +47,14 @@
 			</span>
 			
 			<!-- the password change option -->
-			<a href="changePassword.php"><i class="fas fa-user-cog" style="color:black;font-size:25px;"></i> <b>Passwort Ändern</b></a>
+			<span class="menuBarElement">
+				<a href="changePassword.php"><i class="fas fa-user-cog" style="color:black;font-size:25px;"></i> <b>Passwort Ändern</b></a>
+			</span>
 
 			<!-- the hls url change option --> 
-			<a href="changeHlsUrl.php"> <b>Video Player URL Ändern</b></a>
+			<span class="menuBarElement">
+				<a href="changeHlsUrl.php"><i class="fas fa-external-link-alt" style="color:black;font-size:25px;"></i> <b>Video Player URL Ändern</b></a>
+			</span>
 		</p>
 
 		<center>

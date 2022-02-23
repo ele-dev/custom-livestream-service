@@ -31,6 +31,6 @@ tr.grey {
 	background-color: lightgrey;
 }
 
-#status-bar {
-	margin: 2em;
+.menuBarElement {
+	margin: 1em;
 }
