@@ -29,22 +29,28 @@
 
         public static function isLive()
         {
+            // Get a database connection handle
+            $handle = self::getDBConnection();
+
             // If HLS URL isnt't set yet then fetch it from the database
             if(self::$hls_http_stream == "unset") {
-
-                $handle = self::getDBConnection();
 
                 $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name = 'hls-url'");
                 $dataset = mysqli_fetch_assoc($result);
                 self::$hls_http_stream = $dataset["value"];
-
-                mysqli_close($handle);
             }
 
+            // Detect stream status, update database and return status after closing db connection
             $result = fopen(self::$hls_http_stream, "rb");
             if($result == false) {
+                $updateQuery = "UPDATE tbl_envVar SET value = 'offline' WHERE name LIKE 'stream-status'";
+                $result = mysqli_query($handle, $updateQuery);
+                mysqli_close($handle);
                 return false;
             } else {
+                $updateQuery = "UPDATE tbl_envVar SET value = 'online' WHERE name LIKE 'stream-status'";
+                $result = mysqli_query($handle, $updateQuery);
+                mysqli_close($handle);
                 return true;
             }
         }
