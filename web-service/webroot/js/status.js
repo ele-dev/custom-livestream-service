@@ -31,7 +31,6 @@ function updateStatus()
 
 			// Fetch the hls stream url
 			var streamUrl = getValueByIdentifier("stream-url", resultArray);
-			// console.log("fetched url: " + streamUrl);
 			
 			// Store last status before fetching current one
 			lastLiveStatus = liveStatus;
@@ -44,6 +43,19 @@ function updateStatus()
 				} else {
 					document.getElementById("live-indicator").style.color = "grey";
 					label.innerHTML = " Momentan kein ";
+				}
+			}
+			
+			// fetch and display current viewer count on live stream page
+			var viewerCount = getValueByIdentifier("viewerCount",  resultArray);
+			var viewerLabel = document.getElementById("viewerCount");
+			if(viewerLabel != null) {
+				if(liveStatus === "active" && viewerCount != "not found") {
+					// Display the viewer counter with updated value
+					viewerLabel.innerHTML = "aktuelle Zuschauer: <b>" + viewerCount + "</b> <i class='fas fa-user' style='color:black;font-size:18px;'></i>";
+				} else {
+					// hide the counter while offline
+					viewerLabel.innerHTML = "";
 				}
 			}
 

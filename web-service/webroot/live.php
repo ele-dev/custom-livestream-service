@@ -30,7 +30,14 @@
 
 		<center>
 		<H1> Gottesdienst Live Stream </H1>
-		<H4>Zuschauerzahl: <span id="viewerCount">...</span></H4>
+		
+		<p id="viewerCount">
+			<?php 
+				if(EnvGlobals::isLive() == true) {
+					echo "aktuelle Zuschauer: ";
+				}
+			?>
+		</p>
 		
 		<!-- the box capsels the live stream video player (videoJS) --> 
 		<div id="player-box">
@@ -47,6 +54,9 @@
 				}
 			?>
 		</div>
+
+		<!-- execute script for dynamic content update functionality -->
+		<script src="js/status.js"></script>
 
 		<!-- include footer with impressum link and more -->
 		<?php require_once 'php/footer.php'; ?>
