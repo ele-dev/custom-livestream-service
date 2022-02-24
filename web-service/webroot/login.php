@@ -9,6 +9,15 @@
 		exit;
 	}
 
+    // reset the active viewer marker
+    if(isset($_SESSION['watching'])) {
+        unset($_SESSION['watching']);
+    }
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+	updateTracker();
+
 	require_once 'php/config.php';
 
 	// check if login credential parameters were passed

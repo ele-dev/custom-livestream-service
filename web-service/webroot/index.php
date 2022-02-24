@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+
+<?php
+	session_start();
+
+    // reset the active viewer marker
+    if(isset($_SESSION['watching'])) {
+        unset($_SESSION['watching']);
+    }
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+	updateTracker();
+?>
+
 <html lang="de">
 
 	<!-- This is the main page, where the list of video clips is displayed -->

@@ -9,6 +9,15 @@
 		exit;
 	}
 
+    // reset the active viewer marker
+    if(isset($_SESSION['watching'])) {
+        unset($_SESSION['watching']);
+    }
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+	updateTracker();
+
 	echo "<p><H2> Admin Panel </H2></p>";
 ?>
 

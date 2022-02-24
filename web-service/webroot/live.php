@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+
+<?php
+	session_start();
+
+	// set the active viewer marker
+	$_SESSION['watching'] = true;
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+	updateTracker();
+?>
+
 <html lang="de">
 
 	<head>

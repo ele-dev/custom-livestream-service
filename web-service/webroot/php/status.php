@@ -8,11 +8,20 @@
 
 	require_once 'config.php';
 	
+	$viewerCount = 0;
+
 	echo "livestream::";
 	if(EnvGlobals::isLive() == true) {
 		echo "active";
+		// Get viewer count by counting active session entries
+		$handle = EnvGlobals::getDBConnection();
+
+		$query = "SELECT id FROM tbl_viewerSession";
+		$viewerCount = mysqli_num_rows(mysqli_query($handle, $query));
+
 	} else {
 		echo "inactive";
 	}
 	echo "::stream-url::" . EnvGlobals::getStreamUrl();
+	echo "::viewerCount::" . $viewerCount;
 ?>
