@@ -58,6 +58,16 @@ function updateStatus()
 					viewerLabel.innerHTML = "";
 				}
 			}
+			var viewerLabelSmall = document.getElementById("viewerCount-small");
+			if(viewerLabelSmall != null) {
+				if(liveStatus === "active" && viewerCount != "not found") {
+					// Display the viewer counter with updated value
+					viewerLabelSmall.innerHTML = " (<b>" + viewerCount + "</b> <i class='fas fa-user' style='color:black;font-size:18px;'></i>)";
+				} else {
+					// hide the counter while offline
+					viewerLabelSmall.innerHTML = "";
+				}
+			}
 
 			if(playerBox != null)
 			{
