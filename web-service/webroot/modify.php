@@ -17,7 +17,9 @@
 
 	// do the session tracking
 	require_once 'php/sessionTracker.php';
-	updateTracker();
+	
+    // update the session tracker 
+	updateTracker(isset($_SESSION['watching']), session_id());
 
     // require_once 'php/config.php';
     require_once 'php/videoClipClass.php';

@@ -18,6 +18,7 @@
         private static $db_user = "dbUser";
         private static $db_pass = "db-pass";
         private static $db_databaseName = "testDB";
+        private static $viewerSessionLifetime = 20;         // after 20s viewer session outdated
 
         public static function getDBConnection() 
         {
@@ -70,6 +71,11 @@
             }
 
             return self::$hls_http_stream;
+        }
+
+        public static function getViewerSessionLifetime()
+        {
+            return self::$viewerSessionLifetime;
         }
 
         public static function getPlayerWidth() 

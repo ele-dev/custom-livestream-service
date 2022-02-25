@@ -8,7 +8,9 @@
 
 	// do the session tracking
 	require_once 'php/sessionTracker.php';
-	updateTracker();
+
+	// update the session tracker 
+	updateTracker(isset($_SESSION['watching']), session_id());
 ?>
 
 <html lang="de">
@@ -66,6 +68,7 @@
 		<!-- execute scripts for dynamic content update functionality and the videoJS lib -->
 		<script src="video.min.js"></script>
 		<script src="js/status.js"></script>
+		<script src="js/session.js"></script>
 
 	</body>
 	
