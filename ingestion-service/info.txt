@@ -1,0 +1,5 @@
+In this folder will be the image of the stream ingestion service all related files.
+At the moment the docker image is kept in a seperate github repository from the same account
+and the image is pulled from the docker hub into the compose stack for convenience reasons during development phase.
+Repo: ele-dev/rtmp-hls-server
+Docker image: eledev/stream-ingest:latest

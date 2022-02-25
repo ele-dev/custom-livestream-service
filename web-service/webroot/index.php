@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+
+<?php
+	session_start();
+
+    // reset the active viewer marker
+    if(isset($_SESSION['watching'])) {
+        unset($_SESSION['watching']);
+    }
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+
+	// update the session tracker 
+	updateTracker(isset($_SESSION['watching']), session_id());
+?>
+
 <html lang="de">
 
 	<!-- This is the main page, where the list of video clips is displayed -->
@@ -23,7 +39,7 @@
 				require_once 'php/config.php';
 				if(EnvGlobals::isLive()) {
 					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b>";
+					echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b> <span id='viewerCount-small'></span>";
 				} else {
 					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
 					echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";

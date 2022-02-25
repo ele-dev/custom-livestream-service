@@ -8,6 +8,22 @@ services:
         networks:
             - default
             - dmz_net
+    db:
+        build: ./db-service
+        restart: always
+        volumes:
+            - ./db-service/init:/docker-entrypoint-initdb.d
+            - ./db-service/db:/var/lib/mysql
+        environment:
+            MYSQL_USER: dbUser
+            MYSQL_PASSWORD: db-pass
+            MYSQL_DATABASE: testDB
+            MYSQL_ROOT_PASSWORD: root-pass
+        expose:
+            - "3306"
+        hostname: dbHost
+        networks:
+            - default
     ingest:
         image: eledev/stream-ingest:latest
         restart: always

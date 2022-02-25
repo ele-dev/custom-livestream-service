@@ -9,6 +9,17 @@
 		exit;
 	}
 
+    // reset the active viewer marker
+    if(isset($_SESSION['watching'])) {
+        unset($_SESSION['watching']);
+    }
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+	
+	// update the session tracker 
+	updateTracker(isset($_SESSION['watching']), session_id());
+
 	echo "<p><H2> Admin Panel </H2></p>";
 ?>
 
@@ -30,18 +41,31 @@
 	
 	<body>
 
-		<!-- status bar at the top left to monitor the live stream status -->
-		<p id="status-bar">
-			<?php 
-				require_once 'php/config.php';
-				if(EnvGlobals::isLive()) {
-					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b>";
-				} else {
-					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
-				}
-			?>
+		<!-- the main menu bar at the top of the admin panel --> 
+		<p id='menuBar'>
+			<!-- status bar at the top left to monitor the live stream status -->
+			<span id="status-bar" class="menuBarElement">
+				<?php 
+					require_once 'php/config.php';
+					if(EnvGlobals::isLive()) {
+						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
+						echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b> <span id='viewerCount-small'></span>";
+					} else {
+						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
+						echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
+					}
+				?>
+			</span>
+			
+			<!-- the password change option -->
+			<span class="menuBarElement">
+				<a href="changePassword.php"><i class="fas fa-user-cog" style="color:black;font-size:25px;"></i> <b>Passwort Ändern</b></a>
+			</span>
+
+			<!-- the hls url change option --> 
+			<span class="menuBarElement">
+				<a href="changeHlsUrl.php"><i class="fas fa-external-link-alt" style="color:black;font-size:25px;"></i> <b>Video Player URL Ändern</b></a>
+			</span>
 		</p>
 
 		<center>

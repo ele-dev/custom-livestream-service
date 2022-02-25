@@ -1,4 +1,18 @@
 <!DOCTYPE html>
+
+<?php
+	session_start();
+
+	// set the active viewer marker
+	$_SESSION['watching'] = true;
+
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+
+	// update the session tracker 
+	updateTracker(isset($_SESSION['watching']), session_id());
+?>
+
 <html lang="de">
 
 	<head>
@@ -18,7 +32,14 @@
 
 		<center>
 		<H1> Gottesdienst Live Stream </H1>
-		<H4>Zuschauerzahl: <span id="viewerCount">...</span></H4>
+		
+		<p id="viewerCount">
+			<?php 
+				if(EnvGlobals::isLive() == true) {
+					echo "aktuelle Zuschauer: ";
+				}
+			?>
+		</p>
 		
 		<!-- the box capsels the live stream video player (videoJS) --> 
 		<div id="player-box">
@@ -36,6 +57,9 @@
 			?>
 		</div>
 
+		<!-- execute script for dynamic content update functionality -->
+		<script src="js/status.js"></script>
+
 		<!-- include footer with impressum link and more -->
 		<?php require_once 'php/footer.php'; ?>
 
@@ -44,6 +68,7 @@
 		<!-- execute scripts for dynamic content update functionality and the videoJS lib -->
 		<script src="video.min.js"></script>
 		<script src="js/status.js"></script>
+		<script src="js/session.js"></script>
 
 	</body>
 	
