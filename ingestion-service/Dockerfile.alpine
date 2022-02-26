@@ -3,7 +3,7 @@ ARG ALPINE_VERSION=3.13
 ##### Building stage #####
 FROM alpine:${ALPINE_VERSION} as builder
 LABEL version = "1.5"
-LABEL maintainer = "JamiePhonic@gmail.com"
+LABEL maintainer = "elias@ele-dev.de"
 
 # Versions of nginx, rtmp-module and ffmpeg 
 ARG  NGINX_VERSION=1.21.3
@@ -96,7 +96,7 @@ RUN apk update	&& \
 	apk --no-cache add \
 		bash ca-certificates openssl \
 		pcre libtheora libvorbis lame libvpx \
-		librtmp x264-dev x265-dev freetype stunnel htop && \
+		librtmp x264-dev x265-dev freetype stunnel htop tzdata && \
     rm -rf /var/lib/apt/lists/*	&& \
 	mkdir /assets-default && mkdir /assets-default/ssl && \
 	mkdir /assets
@@ -123,7 +123,6 @@ ENV PUID=0
 ENV PGID=0
 ENV SSL_DOMAIN=rtmp-server.loc
 EXPOSE 1935
-EXPOSE 1936
 EXPOSE 8082
 VOLUME /assets
 
