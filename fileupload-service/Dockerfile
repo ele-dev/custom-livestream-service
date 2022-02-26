@@ -1,5 +1,7 @@
 FROM debian:stable-slim
 
+ARG USER=admin
+
 RUN apt-get update && \
 	apt-get install -y openssh-server tzdata && \
 	apt-get clean -y && \
@@ -7,13 +9,13 @@ RUN apt-get update && \
 
 ENV TZ="Europe/Berlin"
 
-RUN useradd -rm -d /home/admin -s /bin/bash -u 1000 admin
+RUN useradd -rm -d /home/${USER} -s /bin/bash -u 1000 ${USER}
 
 RUN echo 'admin:123456' | chpasswd
 
 RUN service ssh start
 
-RUN chmod a+wr /home/admin
+RUN chmod a+wr /home/${USER}
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
