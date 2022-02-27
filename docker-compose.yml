@@ -25,7 +25,7 @@ services:
         networks:
             - default
     ingest:
-        image: ./ingestion-service
+        build: ./ingestion-service
         restart: always
         volumes:
             - recordings:/mnt/recordings
