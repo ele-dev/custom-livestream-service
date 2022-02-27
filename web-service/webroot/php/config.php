@@ -11,7 +11,7 @@
         private static $hls_http_stream = "unset";
 
 	    // For production deploy (behind reverse proxy)
-        // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/test.m3u8";
+        // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/stream.m3u8";
         private static $vid_player_width = 1280;
         private static $vid_player_height = 720;
         private static $db_host = "dbHost";
