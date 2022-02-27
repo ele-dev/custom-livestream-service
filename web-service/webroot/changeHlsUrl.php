@@ -29,7 +29,7 @@
         // validate the string pattern
         $temp = explode("/", $_POST['newUrl']);
         $numSeg = count($temp);
-        if($numSeg == 5 && $temp[3] == "hls" && ($temp[0] == "http:" || $temp[0] == "https:") && $temp[1] == "") {
+        if($numSeg == 5 && ($temp[0] == "http:" || $temp[0] == "https:") && $temp[1] == "") {
             // call the procedur to change the url
             $result = EnvGlobals::changeStreamUrl($_POST['newUrl']);
             if(!$result) {
