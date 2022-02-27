@@ -15,7 +15,6 @@ All modules are built from source on Debian and Alpine Linux base images.
 - Default settings:
   - RTMP is ON
   - HLS is ON
-- Statistic page of RTMP streams at `http://<server ip>:<server port>/stats`.
 
 Current Image is built using:
 
@@ -27,7 +26,7 @@ This image was inspired by similar docker images from [tiangolo](https://hub.doc
 
 ## Usage
 
-### To run the server
+### To run a standalone container
 
 ```shell
 docker run -d -p 1935:1935 -p 8082:8082 -e PUID=$UID -e PGID=0 eledev/stream-ingest:latest
@@ -37,19 +36,19 @@ For more examples, see the [Wiki](https://github.com/JamiePhonic/rtmps-hls-serve
 
 ***
 
-### To stream to the server
+### Stream Ingestion
 
 - **Stream live RTMP content to:**
 
  `rtmp://<server ip>:1935/live/<stream_key>`
 
-  where `<stream_key>` is any stream key you specify.
+  where `<stream_key>` is used for authentifiaction and must be configured in the nginx config.
 
 - **Configure [OBS](https://obsproject.com/) to stream content:** <br />
   Go to Settings > Stream, choose the following settings:
   - Service: Custom Streaming Server.
   - Server: `rtmp://<server ip>:1935/live`.
-  - StreamKey: anything (but test is the default)
+  - StreamKey: the one set in nginx.conf file
 
 ***
 
@@ -62,7 +61,7 @@ For more examples, see the [Wiki](https://github.com/JamiePhonic/rtmps-hls-serve
     Replace `<server ip>` with the IP of where the server is running, and
     `<stream-key>` with the stream key you used when setting up the stream.
   - For HLS the URLs are of the forms:
-    `http://<server ip>:8082/hls/<stream-key>.m3u8`
+    `http://<server ip>:8082/hls/stream.m3u8`
   - Click Play.
 
 ## Copyright
