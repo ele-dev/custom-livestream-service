@@ -23,6 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
 		<link rel="stylesheet" href="styles/video-js.min.css" />
 		<link rel="stylesheet" type="text/css" href="styles/player.css" />
+		<link rel="stylesheet" type="text/css" href="styles/videojs-hls-quality-selector.css" />
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
@@ -57,16 +58,17 @@
 			?>
 		</div>
 
-		<!-- execute script for dynamic content update functionality -->
-		<script src="js/status.js"></script>
-
 		<!-- include footer with impressum link and more -->
 		<?php require_once 'php/footer.php'; ?>
 
 		</center>
 		
-		<!-- execute scripts for dynamic content update functionality and the videoJS lib -->
+		<!-- video JS framework and plugins --> 
 		<script src="video.min.js"></script>
+		<script src="videojs-contrib-quality-levels.min.js"></script>
+		<script src="videojs-hls-quality-selector.min.js"></script>
+
+		<!-- execute scripts for dynamic content update functionality -->
 		<script src="js/status.js"></script>
 		<script src="js/session.js"></script>
 

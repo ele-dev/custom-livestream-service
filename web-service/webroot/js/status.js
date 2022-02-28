@@ -73,14 +73,29 @@ function updateStatus()
 			{
 				// When the live stream starts, show the video player
 				if(lastLiveStatus === "inactive" && liveStatus === "active") {
-					playerBox.innerHTML = "<video id='live-player' class='video-js vjs-default-skin' controls autoplay width='1280' height='720' poster='poster.png'></video>";
+					playerBox.innerHTML = "<video-js id='live-player' class='video-js vjs-default-skin vjs-big-play-centered' poster='poster.png'></video-js>";
 
-					var player = videojs("live-player", {liveui: true});
-					player.src({type: 'application/x-mpegURL', src: streamUrl});
+					// create the video JS live player and make it fluid
+					var player = videojs("live-player", {
+						liveui: true,
+						controls: true,
+						autoplay: true,
+						preload: 'auto'
+					});
 					player.fluid(true);
+					player.src({type: 'application/x-mpegURL', src: streamUrl});
+					var qualityLevels = player.qualityLevels();
+					
+					// output detected quality levels to the console
+					console.log(qualityLevels);
+
 					player.on('ready', function() {
 						this.addClass('my-example');
+						player.hlsQualitySelector({ 
+							displayCurrentQuality: true
+						});
 					});
+
 					console.log("live stream just started");
 				}
 				// when the live stream ends, hide the video player
