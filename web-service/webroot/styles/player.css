@@ -2,17 +2,18 @@
 
 video.responsive-video 
 {
-    max-width: 300px;
+    max-width: 280px;
     height: auto;
 }
 
 #player-box
 {
-    max-width: 300px;
+    max-width: 280px;
     height: auto;
 }
 
-@media screen and (min-width: 768px)  
+/*  for tablets */
+@media screen and (min-width: 600px)
 {
     video.responsive-video 
     {
@@ -24,6 +25,22 @@ video.responsive-video
         max-width: 640px;
     }
 }
+
+/* for laptops and desktops */ 
+@media screen and (min-width: 768px)  
+{
+    video.responsive-video 
+    {
+        max-width: 1000px;
+    }
+
+    #player-box
+    {
+        max-width: 1000px;
+    }
+}
+
+
 
 #loadingSpinner
 {
