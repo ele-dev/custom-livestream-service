@@ -92,7 +92,7 @@ function updateStatus()
 					player.on('ready', function() {
 						this.addClass('my-example');
 						player.hlsQualitySelector({ 
-							displayCurrentQuality: true
+							displayCurrentQuality: true,
 						});
 					});
 
