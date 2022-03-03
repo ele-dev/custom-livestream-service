@@ -4,7 +4,7 @@
 
 body {
 	background-color: white;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: 'SFMono-Regular', 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
 /* link elements */
@@ -18,17 +18,20 @@ a:hover, a:active {
 	text-decoration: underline;
 }
 
+/* container around the clip list */
+
 .video-list-container {
 	width: 95%;
 	overflow: auto;
+
+	box-shadow: 4px 4px 5px rgb(140, 140, 140);
+	border-top: solid 1px rgb(250, 250, 250);
 }
 
 /* table styling */
 table {
 	width: 100%;
 	border-collapse: collapse;
-	border: solid 1px rgb(250, 250, 250);
-	box-shadow: 4px 4px 5px rgb(140, 140, 140);
 }
 
 th {
@@ -44,7 +47,7 @@ td {
 th, td {
 	text-align: center;
 	color: black;
-	min-width: 8em;
+	min-width: 7em;
 }
 
 tr.white {
@@ -68,6 +71,12 @@ tr:hover {
 
 .fas:hover {
 	text-shadow: 3px 3px 5px rgb(100, 100, 100);
+}
+
+/* the top bar */
+
+#menuBar {
+	overflow: auto;
 }
 
 /* element of the main menu bar at the top */
