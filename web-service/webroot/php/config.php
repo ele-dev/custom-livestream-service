@@ -9,6 +9,7 @@
     class EnvGlobals
     {
         private static $hls_http_stream = "unset";
+        private static $news_text_line = "unset";
 
 	    // For production deploy (behind reverse proxy)
         // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/stream.m3u8";
@@ -71,6 +72,22 @@
             }
 
             return self::$hls_http_stream;
+        }
+
+        public static function getNewsText()
+        {
+            // If not set yet then fetch it from the database
+            if(self::$news_text_line == "unset") {
+                $handle = self::getDBConnection();
+
+                $result = mysqli_query($handle, "SELECT * FROM tbl_envVar WHERE name LIKE 'news-text'");
+                $dataset = mysqli_fetch_assoc($result);
+                self::$news_text_line = $dataset["value"];
+
+                mysqli_close($handle);
+            }
+
+            return self::$news_text_line;
         }
 
         public static function getViewerSessionLifetime()
@@ -157,6 +174,24 @@
             // close the database handle
             mysqli_close($handle);
             
+            return true;
+        }
+
+        public static function changeNewsText($textLine)
+        {
+            // Get a connection handle
+            $handle = self::getDBConnection();
+
+            // update the local cached text
+            self::$news_text_line = htmlspecialchars($textLine);
+
+            // then store it in the database
+            $updateQuery = "UPDATE tbl_envVar SET value = '" . htmlspecialchars($textLine) . "' WHERE name LIKE 'news-text'";
+            $result = mysqli_query($handle, $updateQuery);
+
+            // close the databse connection handle
+            mysqli_close($handle);
+
             return true;
         }
     }

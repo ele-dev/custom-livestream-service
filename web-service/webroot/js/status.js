@@ -39,10 +39,10 @@ function updateStatus()
 			if(label != null) {
 				if(liveStatus === "active") {
 					document.getElementById("live-indicator").style.color = "green";
-					label.innerHTML = " Zum ";
+					label.innerHTML = "Zum ";
 				} else {
 					document.getElementById("live-indicator").style.color = "grey";
-					label.innerHTML = " Momentan kein ";
+					label.innerHTML = "Momentan kein ";
 				}
 			}
 			
@@ -52,7 +52,7 @@ function updateStatus()
 			if(viewerLabel != null) {
 				if(liveStatus === "active" && viewerCount != "not found") {
 					// Display the viewer counter with updated value
-					viewerLabel.innerHTML = "aktuelle Zuschauer: <b>" + viewerCount + "</b> <i class='fas fa-user' style='color:black;font-size:18px;'></i>";
+					viewerLabel.innerHTML = "aktuelle Zuschauer: <b>" + viewerCount + "</b><i class='fas fa-user' style='color:black;font-size:18px;'></i>";
 				} else {
 					// hide the counter while offline
 					viewerLabel.innerHTML = "";
@@ -62,7 +62,7 @@ function updateStatus()
 			if(viewerLabelSmall != null) {
 				if(liveStatus === "active" && viewerCount != "not found") {
 					// Display the viewer counter with updated value
-					viewerLabelSmall.innerHTML = " (<b>" + viewerCount + "</b> <i class='fas fa-user' style='color:black;font-size:18px;'></i>)";
+					viewerLabelSmall.innerHTML = " (<b>" + viewerCount + "</b><i class='fas fa-user' style='color:black;font-size:18px;'></i>)";
 				} else {
 					// hide the counter while offline
 					viewerLabelSmall.innerHTML = "";

@@ -35,18 +35,30 @@
 
 		<!-- status bar at the top left to monitor the live stream status -->
 		<p id="status-bar">
+			<span class="menuBarElement">
+				<?php 
+					require_once 'php/config.php';
+					if(EnvGlobals::isLive()) {
+						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
+						echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b> <span id='viewerCount-small'></span>";
+					} else {
+						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
+						echo "<b><span id='statusLabel'>Momentan kein </span><a href='live.php'>Live Stream</a></b>";
+					}
+				?>
+			</span>
+		</p>
+
+		<p id="news">
 			<?php 
 				require_once 'php/config.php';
-				if(EnvGlobals::isLive()) {
-					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b> <span id='viewerCount-small'></span>";
-				} else {
-					echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
-					echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
-				}
+				echo "<i class='fas fa-info' style='color:black;font-size:25px;'></i><b>Aktuelles: " . EnvGlobals::getNewsText() . "</b>";
 			?>
 		</p>
 		<center>
+
+		<!-- headline of the video clip list -->
+		<H1>Aufnahmen</H1>
 
 		<!-- show the list of recorded video clips from the past available for download and instant playback --> 
 		<div id="video-list">

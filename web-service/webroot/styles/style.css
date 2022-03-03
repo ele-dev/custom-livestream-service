@@ -7,30 +7,74 @@ body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* link elements */
+a:link, a:visited {
+	color: purple;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: purple;
+	text-decoration: underline;
+}
+
+.video-list-container {
+	width: 95%;
+	overflow: auto;
+}
+
+/* table styling */
 table {
-	width: 70%;
+	width: 100%;
+	border-collapse: collapse;
+	border: solid 1px rgb(250, 250, 250);
+	box-shadow: 4px 4px 5px rgb(140, 140, 140);
 }
 
 th {
+	background-color: rgb(240, 240, 240);
 	border-bottom: solid 2px black;
+	height: 3.4em;
+}
+
+td {
+	height: 2.7em;
 }
 
 th, td {
 	text-align: center;
 	color: black;
-	min-width: 10em;
-	height: 2.5em;
+	min-width: 8em;
 }
 
 tr.white {
-	background-color: white;
-	border-bottom: 1px solid black;
+	background-color: rgb(240, 240, 240);
 }
 
 tr.grey {
-	background-color: lightgrey;
+	background-color: rgb(200, 200, 200);
 }
 
+tr:hover {
+	background-color: rgb(170, 170, 170);
+}
+
+/* icon styling */
+
+.fas {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+.fas:hover {
+	text-shadow: 3px 3px 5px rgb(100, 100, 100);
+}
+
+/* element of the main menu bar at the top */
 .menuBarElement {
+	margin: 1em;
+}
+
+#news {
 	margin: 1em;
 }

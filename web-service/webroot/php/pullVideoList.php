@@ -10,8 +10,10 @@
 
 	function displayVideoClipList($privileged)
 	{
-		// Headline of the table 
-		echo "<H1>Aufnahmen:</H1><table><tbody>";
+		// container around the table 
+		echo "<div class='video-list-container'>";
+
+		echo "<table><tbody>";
 		echo "<tr><th>Wochentag</th><th>Datum</th><th>Beginn</th><th>Dateigröße</th><th>Anschauen</th><th>Herunterladen</th>";
 		if($privileged) {
 			echo "<th>Löschen</th>";
@@ -29,6 +31,7 @@
 		VideoClip::printClipList($privileged);
 
 		echo "</tbody></table>";
+		echo "</div>";
 
 		return;
 	}
