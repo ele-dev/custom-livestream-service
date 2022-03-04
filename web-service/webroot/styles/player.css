@@ -2,13 +2,13 @@
 
 video.responsive-video 
 {
-    max-width: 280px;
+    max-width: 97%;
     height: auto;
 }
 
 #player-box
 {
-    max-width: 280px;
+    max-width: 97%;
     height: auto;
 }
 
@@ -17,12 +17,12 @@ video.responsive-video
 {
     video.responsive-video 
     {
-        max-width: 640px;
+        max-width: 95%;
     }
 
     #player-box
     {
-        max-width: 640px;
+        max-width: 95%;
     }
 }
 
@@ -31,12 +31,12 @@ video.responsive-video
 {
     video.responsive-video 
     {
-        max-width: 1000px;
+        max-width: 70%;
     }
 
     #player-box
     {
-        max-width: 1000px;
+        max-width: 70%;
     }
 }
 

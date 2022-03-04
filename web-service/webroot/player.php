@@ -45,7 +45,7 @@
 				require_once 'php/config.php';
 
 				// display the HTML5 video player
-				echo "<video class='responsive-video' width='1280' height='720' type='video/mp4' src='" . htmlspecialchars("videos/" . $_GET['name']) . "' controls>";
+				echo "<video class='responsive-video' preload='auto' type='video/mp4' src='" . htmlspecialchars("videos/" . $_GET['name']) . "' controls>";
 				echo "Der Browser kann diese Datei nicht abspielen!";
 				echo "</video>";
 			?>

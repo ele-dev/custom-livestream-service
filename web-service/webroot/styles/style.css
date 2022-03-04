@@ -28,37 +28,37 @@ a:hover, a:active {
 	border-top: solid 1px rgb(250, 250, 250);
 }
 
-/* table styling */
-table {
+/* video list table styling */
+#video-list-table {
 	width: 100%;
 	border-collapse: collapse;
 }
 
-th {
+#video-list-table th {
 	background-color: rgb(240, 240, 240);
 	border-bottom: solid 2px black;
 	height: 3.4em;
 }
 
-td {
+#video-list-table td {
 	height: 2.7em;
 }
 
-th, td {
+#video-list-table th, #video-list-table td {
 	text-align: center;
 	color: black;
 	min-width: 7em;
 }
 
-tr.white {
+#video-list-table tr.white {
 	background-color: rgb(240, 240, 240);
 }
 
-tr.grey {
+#video-list-table tr.grey {
 	background-color: rgb(200, 200, 200);
 }
 
-tr:hover {
+#video-list-table tr:hover {
 	background-color: rgb(170, 170, 170);
 }
 
@@ -69,7 +69,7 @@ tr:hover {
 	margin-right: 0.5em;
 }
 
-.fas:hover {
+a .fas:hover {
 	text-shadow: 3px 3px 5px rgb(100, 100, 100);
 }
 
