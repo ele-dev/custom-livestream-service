@@ -4,6 +4,7 @@ video.responsive-video
 {
     max-width: 97%;
     height: auto;
+    box-shadow: 3px 3px 5px rgb(140, 140, 140);
 }
 
 #player-box
@@ -31,7 +32,7 @@ video.responsive-video
 {
     video.responsive-video 
     {
-        max-width: 70%;
+        max-width: 67%;
     }
 
     #player-box
@@ -39,8 +40,6 @@ video.responsive-video
         max-width: 70%;
     }
 }
-
-
 
 #loadingSpinner
 {

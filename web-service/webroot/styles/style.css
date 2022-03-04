@@ -20,6 +20,10 @@ a:hover, a:active {
 
 /* container around the clip list */
 
+#video-list {
+	padding: 10px;
+}
+
 .video-list-container {
 	width: 95%;
 	overflow: auto;
@@ -86,4 +90,11 @@ a .fas:hover {
 
 #news {
 	margin: 1em;
+}
+
+/* the footer */
+.footer {
+	background-color: white;
+	text-align: center;
+	padding: 10px;
 }
