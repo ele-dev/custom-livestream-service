@@ -24,6 +24,10 @@ a:hover, a:active {
 	padding: 10px;
 }
 
+#admin-video-list {
+	padding: 10px;
+}
+
 .video-list-container {
 	width: 95%;
 	overflow: auto;
@@ -91,6 +95,9 @@ a .fas:hover {
 #news {
 	margin: 1em;
 }
+
+/* logout button */
+
 
 /* the footer */
 .footer {

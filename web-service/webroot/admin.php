@@ -96,7 +96,7 @@
 
 		<!-- logout button -->
 		<form action='logout.php' method='post'>
-			<input type='submit' value='Ausloggen'>
+			<input id='logout-btn' type='submit' value='Ausloggen'>
 		</form>
 
 	</body>

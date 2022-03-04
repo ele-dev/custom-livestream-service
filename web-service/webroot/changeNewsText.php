@@ -44,6 +44,7 @@
 		<title>Gottesdienst Verwaltung</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/settings.css">
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
     </head>
@@ -57,16 +58,18 @@
         
         <br>
         <center>
-            <!-- news text editor formuar -->
-            <form action="" method="post">
-                <p><label for="newText">Neuen Lauftext eingeben:</label></p>
-                <p><input type="text" name="newText" id="newText" value="<?= EnvGlobals::getNewsText(); ?>"></p>
-                
-                <input type="submit" value="Lauftext Anzeige Ändern">
-            </form>
+            <div class="styled-form">
+                <!-- news text editor formuar -->
+                <form action="" method="post">
+                    <p><label for="newText">Neuen Lauftext eingeben</label></p>
+                    <p><input type="text" name="newText" id="newText" value="<?= EnvGlobals::getNewsText(); ?>"></p>
+                    
+                    <input type="submit" value="Lauftext Anzeige Ändern">
+                </form>
 
-            <!-- status label -->
-            <p><?php echo $statusLabel; ?></p>
+                <!-- status label -->
+                <p><?php echo $statusLabel; ?></p>
+            </div>
         </center>
 
         <!-- include footer with impressum link and more -->

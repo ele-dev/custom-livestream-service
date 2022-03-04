@@ -50,6 +50,7 @@
 		<title>Gottesdienst Verwaltung</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/settings.css">
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
     </head>
@@ -61,21 +62,23 @@
             
         <center>
             <!-- password change formular -->
-            <form action="" method="post">
-                <p><label for="oldPwd">Aktuelles Passwort: </label></p>
-                <p><input type="password" name="oldPwd" id="oldPwd"></p>
-                
-                <p><label for="newPwd">Neues Passwort: </label></p>
-                <p><input type="password" name="newPwd" id="newPwd"></p>
-                
-                <p><label for="newPwdRepeat">Neues Passwort wiederholen: </label></p>
-                <p><input type="password" name="newPwdRepeat" id="newPwdRepeat"></p>
-                
-                <input type="submit" value="Passwort Ändern">
-            </form>
+            <div class="styled-form">
+                <form action="" method="post">
+                    <p><label for="oldPwd">Aktuelles Passwort</label></p>
+                    <p><input type="password" name="oldPwd" id="oldPwd"></p>
+                    
+                    <p><label for="newPwd">Neues Passwort</label></p>
+                    <p><input type="password" name="newPwd" id="newPwd"></p>
+                    
+                    <p><label for="newPwdRepeat">Neues Passwort wiederholen</label></p>
+                    <p><input type="password" name="newPwdRepeat" id="newPwdRepeat"></p>
+                    
+                    <input type="submit" value="Passwort Ändern">
+                </form>
 
-            <!-- status label -->
-            <p><?php echo $statusLabel; ?></p>
+                <!-- status label -->
+                <p><?php echo $statusLabel; ?></p>
+            </div>
         </center>
 
         <!-- include footer with impressum link and more -->
