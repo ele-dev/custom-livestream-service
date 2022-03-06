@@ -24,4 +24,5 @@
 	}
 	echo "::stream-url::" . EnvGlobals::getStreamUrl();
 	echo "::viewerCount::" . $viewerCount;
+	echo "::news-text::" . EnvGlobals::getNewsText();
 ?>

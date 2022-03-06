@@ -50,10 +50,11 @@
 				// Only show video player when live stream is active (detected by an existing HLS playlist file .m3u8)
 				if(EnvGlobals::isLive() == true) {
 					// show a loading spinner until the actual video player shows up
-					echo "<i id='loadingSpinner' class='fas fa-spinner' style='color:#089bcc;font-size:115px;'></i>";
+					echo "<i id='loadingSpinner' class='fas fa-spinner'></i>";
 				} else {
 					// tell the user that the live stream is offline at the moment
 					echo "<H1>Sendepause</H1>";
+					echo "<p><H3>" . EnvGlobals::getNewsText() . "</H3></p>";
 				}
 			?>
 		</div>

@@ -41,7 +41,7 @@
 		<title>Gottesdienst Verwaltung Login</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
-		<link rel="stylesheet" type="text/css" href="styles/login.css" />
+		<link rel="stylesheet" type="text/css" href="styles/settings.css" />
 		<link rel="stylesheet" href="styles/video-js.min.css" />
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
@@ -51,7 +51,7 @@
 
 		<center>
 		<H1> Verwaltung Login </H1>
-		<div id="login-form">
+		<div class='styled-form'>
 			<!-- login form --> 
 			<form method='post' action=''>
 				<p>

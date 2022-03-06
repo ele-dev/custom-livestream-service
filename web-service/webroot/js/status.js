@@ -31,6 +31,10 @@ function updateStatus()
 
 			// Fetch the hls stream url
 			var streamUrl = getValueByIdentifier("stream-url", resultArray);
+
+			// Fetch the news text line 
+			var newsText = getValueByIdentifier("news-text", resultArray);
+			if(newsText === "not found") { newsText = ""; }
 			
 			// Store last status before fetching current one
 			lastLiveStatus = liveStatus;
@@ -102,7 +106,7 @@ function updateStatus()
 				if(lastLiveStatus === "active" && liveStatus === "inactive") {
 					var player = videojs("live-player", {liveui: true});
 					player.dispose();
-					playerBox.innerHTML = "<br><H1>Sendepause</H1><br>";
+					playerBox.innerHTML = "<p><H1>Sendepause</H1></p><p><H3>" + newsText + "</H3></p>";
 					console.log("live stream just stopped");
 				}
 			}
