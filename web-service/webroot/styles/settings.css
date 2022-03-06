@@ -31,6 +31,10 @@
     border: 1px solid black;
 }
 
+#clip-info {
+    padding: 5px;    
+}
+
 /* for laptops and desktops */ 
 @media screen and (min-width: 768px)  
 {
