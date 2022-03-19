@@ -18,6 +18,15 @@
     box-sizing: border-box;
 }
 
+.styled-form input[type=date], .styled-form input[type=time] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 .styled-form input[type=submit] {
     width: 100%;
     border-radius: 4px;

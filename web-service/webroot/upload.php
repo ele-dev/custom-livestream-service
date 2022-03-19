@@ -28,7 +28,7 @@
     // Check for the punlish event parameters
     if(count($_POST) > 0) {
         if(!isset($_POST['videoFile']) || !isset($_POST['recordDate']) || !isset($_POST['recordTime'])) {
-            $statusLabel = "<p>Überprüfe deine Eingabe auf Vollständigkeit!</p>";
+            $statusLabel = "<p>Überprüfen sie ihre Eingabe auf Vollständigkeit!</p>";
         }
         else 
         {
@@ -62,10 +62,12 @@
         // Display all options in the HTML form
         for($i = 0; $i < count($uploaded); $i++)
         {
+            // get filename and filesize
             $filename = basename($uploaded[$i]);
+            $filesize = round(filesize($uploaded[$i]) / 1000000);
             echo "<p>";
             echo "<input type='radio' id='" . $filename . "' name='videoFile' value='" . $filename . "'>";
-            echo "<label for='" . $filename . "'>" . $filename . "<i class='fas fa-file-video' style='color:black;font-size:20px;'></i></label>";
+            echo "<label for='" . $filename . "'>" . $filename . "<i class='fas fa-file-video' style='color:black;font-size:20px;'></i> (" . $filesize . " MB)</label>";
             echo "</p>";
         }
 
@@ -106,15 +108,15 @@
                 <!-- video publisher formuar -->
                 <form action="" method="post">
                     <!-- radio button selector for video file -->
-                    <p>Video Aufnahme Auswählen</p>
+                    <p><b><label>Video Aufnahme Auswählen</label></b></p>
                     <?php displayRecordingsForUpload(); ?>
 
                     <!-- date and time of the recorded event -->
-                    <p><label for='idDate'>Aufnahme Datum: </label></p>
-                    <p><input type='date' id='idDate' name='recordDate'></p>
+                    <p><b><label for='idDate'>Aufnahme Datum: </label></b></p>
+                    <p><input type='date' id='idDate' name='recordDate' value='<?php echo date("Y-m-d", time()); ?>'></p>
 
-                    <p><label for='idTime'>Aufnahme Uhrzeit: </label></p>
-                    <p><input type='time' id='idTime' name='recordTime'></p>
+                    <p><b><label for='idTime'>Aufnahme Uhrzeit: </label></b></p>
+                    <p><input type='time' id='idTime' name='recordTime' value='<?php echo date("H:i", time()); ?>'></p>
                     
                     <input type="submit" value="Aufnahme veröffentlichen">
                 </form>
