@@ -76,6 +76,11 @@
 			<span class="menuBarElement">
 				<a href="upload.php"><i class="fas fa-file-upload" style="color:black;font-size:25px;"></i><b>Aufnahmen Hochladen</b></a>
 			</span>
+
+			<!-- the statistic section --> 
+			<span class"menuBarElement">
+				<a href="statistics.php"><i class="fas fa-chart-line" style="color:black;font-size:25px;"></i><b>Statistiken</b></a>
+			</span>
 		</p>
 
 		<center>
