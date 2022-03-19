@@ -104,7 +104,7 @@
             <form action='' method='post'>
                 <label for='idDate'>Aufnahme Datum: </label>
                 <?php echo "<input type='date' id='idDate' name='recordDate' value='" . date("Y-m-d", strtotime($videoFile->getRecordDate())) . "' />"; ?>
-                <input type='submit' value='Datum Speichern' />
+                <input type='submit' value='Datum Speichern' /> 
             </form>
         </div>
 

@@ -71,6 +71,11 @@
 			<span class="menuBarElement">
 				<a href="changeNewsText.php"><i class="fas fa-edit" style="color:black;font-size:25px;"></i><b>Info Lauftext</b></a>
 			</span>
+
+			<!-- the clip upload option -->
+			<span class="menuBarElement">
+				<a href="upload.php"><i class="fas fa-file-upload" style="color:black;font-size:25px;"></i><b>Aufnahmen Hochladen</b></a>
+			</span>
 		</p>
 
 		<center>
