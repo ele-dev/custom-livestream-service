@@ -29,7 +29,7 @@
         // validate the string pattern
         $temp = explode("/", $_POST['newUrl']);
         $numSeg = count($temp);
-        if($numSeg == 5 && $temp[3] == "hls" && ($temp[0] == "http:" || $temp[0] == "https:") && $temp[1] == "") {
+        if($numSeg == 5 && ($temp[0] == "http:" || $temp[0] == "https:") && $temp[1] == "") {
             // call the procedur to change the url
             $result = EnvGlobals::changeStreamUrl($_POST['newUrl']);
             if(!$result) {
@@ -53,6 +53,7 @@
 		<title>Gottesdienst Verwaltung</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/settings.css">
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
     </head>
@@ -69,16 +70,18 @@
         
         <br>
         <center>
-            <!-- hls url editor formuar -->
-            <form action="" method="post">
-                <p><label for="newUrl">Neue HTTP(S) HLS URL eingeben:</label></p>
-                <p><input type="text" name="newUrl" id="newUrl" value="<?= EnvGlobals::getStreamUrl(); ?>"></p>
-                
-                <input type="submit" value="HLS URL Ändern">
-            </form>
+            <div class="styled-form">
+                <!-- hls url editor formuar -->
+                <form action="" method="post">
+                    <p><label for="newUrl">Neue HTTP(S) HLS URL eingeben</label></p>
+                    <p><input type="text" name="newUrl" id="newUrl" value="<?= EnvGlobals::getStreamUrl(); ?>"></p>
+                    
+                    <input type="submit" value="HLS URL Ändern">
+                </form>
 
-            <!-- status label -->
-            <p><?php echo $statusLabel; ?></p>
+                <!-- status label -->
+                <p><?php echo $statusLabel; ?></p>
+            </div>
         </center>
 
         <!-- include footer with impressum link and more -->

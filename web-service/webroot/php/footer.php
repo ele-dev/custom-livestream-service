@@ -1,3 +1,3 @@
 <?php
-    echo "<footer><p><a href='impressum.php'>Impressum</a></p></footer>";
+    echo "<div class='footer'><p><a href='impressum.php'>Impressum</a></p></div>";
 ?>

@@ -19,8 +19,6 @@
 	
 	// update the session tracker 
 	updateTracker(isset($_SESSION['watching']), session_id());
-
-	echo "<p><H2> Admin Panel </H2></p>";
 ?>
 
 <html lang="de">
@@ -41,6 +39,8 @@
 	
 	<body>
 
+		<p><H2>Administrations Oberfläche</H2></p>
+
 		<!-- the main menu bar at the top of the admin panel --> 
 		<p id='menuBar'>
 			<!-- status bar at the top left to monitor the live stream status -->
@@ -52,23 +52,36 @@
 						echo "<b><span id='statusLabel'> Zum </span><a href='live.php'>Live Stream</a></b> <span id='viewerCount-small'></span>";
 					} else {
 						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:grey;font-size:25px;'></i></a>";
-						echo "<b><span id='statusLabel'> Momentan kein </span><a href='live.php'>Live Stream</a></b>";
+						echo "<b><span id='statusLabel'>Momentan kein </span><a href='live.php'>Live Stream</a></b>";
 					}
 				?>
 			</span>
 			
 			<!-- the password change option -->
 			<span class="menuBarElement">
-				<a href="changePassword.php"><i class="fas fa-user-cog" style="color:black;font-size:25px;"></i> <b>Passwort Ändern</b></a>
+				<a href="changePassword.php"><i class="fas fa-user-cog" style="color:black;font-size:25px;"></i><b>Passwort</b></a>
 			</span>
 
 			<!-- the hls url change option --> 
 			<span class="menuBarElement">
-				<a href="changeHlsUrl.php"><i class="fas fa-external-link-alt" style="color:black;font-size:25px;"></i> <b>Video Player URL Ändern</b></a>
+				<a href="changeHlsUrl.php"><i class="fas fa-external-link-alt" style="color:black;font-size:25px;"></i><b>Video Player URL</b></a>
+			</span>
+
+			<!-- the news text change option -->
+			<span class="menuBarElement">
+				<a href="changeNewsText.php"><i class="fas fa-edit" style="color:black;font-size:25px;"></i><b>Info Lauftext</b></a>
+			</span>
+
+			<!-- the clip upload option -->
+			<span class="menuBarElement">
+				<a href="upload.php"><i class="fas fa-file-upload" style="color:black;font-size:25px;"></i><b>Aufnahmen Hochladen</b></a>
 			</span>
 		</p>
 
 		<center>
+
+		<!-- headline of the video clip list -->
+		<H1>Aufnahmen</H1>
 
 		<!-- show the list of video clips with advanced access and options for admins -->
 		<div id="admin-video-list">
@@ -88,7 +101,7 @@
 
 		<!-- logout button -->
 		<form action='logout.php' method='post'>
-			<input type='submit' value='Ausloggen'>
+			<input id='logout-btn' type='submit' value='Ausloggen'>
 		</form>
 
 	</body>

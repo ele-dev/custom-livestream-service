@@ -1,32 +1,21 @@
 /* design of the video player */
 
-video.responsive-video 
-{
-    max-width: 300px;
+video.responsive-video {
+    max-width: 97%;
+    height: auto;
+    box-shadow: 3px 3px 5px rgb(140, 140, 140);
+}
+
+#player-box {
+    max-width: 97%;
     height: auto;
 }
 
-#player-box
-{
-    max-width: 300px;
-    height: auto;
-}
+/* the loading spinner */
+#loadingSpinner {
+    font-size: 90px;
+    color: #089bcc;
 
-@media screen and (min-width: 768px)  
-{
-    video.responsive-video 
-    {
-        max-width: 640px;
-    }
-
-    #player-box
-    {
-        max-width: 640px;
-    }
-}
-
-#loadingSpinner
-{
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 
@@ -44,5 +33,37 @@ video.responsive-video
     }
     to {
         transform:rotate(360deg);
+    }
+}
+
+/*  for tablets */
+@media screen and (min-width: 600px)
+{
+    video.responsive-video {
+        max-width: 95%;
+    }
+
+    #player-box {
+        max-width: 95%;
+    }
+
+    #loadingSpinner {
+        font-size: 115px;
+    }
+}
+
+/* for laptops and desktops */ 
+@media screen and (min-width: 768px)  
+{
+    video.responsive-video {
+        max-width: 67%;
+    }
+
+    #player-box {
+        max-width: 70%;
+    }
+
+    #loadingSpinner {
+        font-size: 115px;
     }
 }

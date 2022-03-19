@@ -75,6 +75,7 @@
 		<title>Gottesdienst Streaming</title>
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/settings.css">
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
     </head>
@@ -86,12 +87,15 @@
         <H2> Clip Einstellungen ändern </H2>
 
         <!-- general information about the video file to be modified -->
-        <div id="idInfo">
-            <p><b>Dateiname: </b><?php echo $videoFile->getFilename(); ?></p>
-            <p><b>Dateigröße: </b><?php echo $videoFile->getFilesize(); ?> MB</p>
-            <p><b>Video Länge: </b>Zur Zeit nicht verfügbar</p>
-            <p><b>Aufnahme Datum: </b><?php echo $videoFile->getRecordDate(); ?></p>
-            <p><b>Aufnahme Uhrzeit: </b><?php echo $videoFile->getRecordTime(); ?> Uhr</p>
+        <div id="clip-info">
+            <table>
+                <tbody>
+                    <tr><td><b>Dateiname:</b></td><td><?php echo $videoFile->getFilename(); ?></td></tr>
+                    <tr><td><b>Dateigröße:</b></td><td><?php echo $videoFile->getFilesize(); ?> MB</td></tr>
+                    <tr><td><b>Aufnahme Datum:</b></td><td><?php echo $videoFile->getRecordDate(); ?></td></tr>
+                    <tr><td><b>Aufnahme Uhrzeit:</b></td><td><?php echo $videoFile->getRecordTime(); ?> Uhr</td></tr>
+                </tbody>
+            </table>
         </div>
 
         <br>
@@ -100,7 +104,7 @@
             <form action='' method='post'>
                 <label for='idDate'>Aufnahme Datum: </label>
                 <?php echo "<input type='date' id='idDate' name='recordDate' value='" . date("Y-m-d", strtotime($videoFile->getRecordDate())) . "' />"; ?>
-                <input type='submit' value='Datum Speichern' />
+                <input type='submit' value='Datum Speichern' /> 
             </form>
         </div>
 

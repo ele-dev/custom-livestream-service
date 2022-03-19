@@ -31,6 +31,10 @@ function updateStatus()
 
 			// Fetch the hls stream url
 			var streamUrl = getValueByIdentifier("stream-url", resultArray);
+
+			// Fetch the news text line 
+			var newsText = getValueByIdentifier("news-text", resultArray);
+			if(newsText === "not found") { newsText = ""; }
 			
 			// Store last status before fetching current one
 			lastLiveStatus = liveStatus;
@@ -39,10 +43,10 @@ function updateStatus()
 			if(label != null) {
 				if(liveStatus === "active") {
 					document.getElementById("live-indicator").style.color = "green";
-					label.innerHTML = " Zum ";
+					label.innerHTML = "Zum ";
 				} else {
 					document.getElementById("live-indicator").style.color = "grey";
-					label.innerHTML = " Momentan kein ";
+					label.innerHTML = "Momentan kein ";
 				}
 			}
 			
@@ -52,7 +56,7 @@ function updateStatus()
 			if(viewerLabel != null) {
 				if(liveStatus === "active" && viewerCount != "not found") {
 					// Display the viewer counter with updated value
-					viewerLabel.innerHTML = "aktuelle Zuschauer: <b>" + viewerCount + "</b> <i class='fas fa-user' style='color:black;font-size:18px;'></i>";
+					viewerLabel.innerHTML = "aktuelle Zuschauer: <b>" + viewerCount + "</b><i class='fas fa-user' style='color:black;font-size:18px;'></i>";
 				} else {
 					// hide the counter while offline
 					viewerLabel.innerHTML = "";
@@ -62,7 +66,7 @@ function updateStatus()
 			if(viewerLabelSmall != null) {
 				if(liveStatus === "active" && viewerCount != "not found") {
 					// Display the viewer counter with updated value
-					viewerLabelSmall.innerHTML = " (<b>" + viewerCount + "</b> <i class='fas fa-user' style='color:black;font-size:18px;'></i>)";
+					viewerLabelSmall.innerHTML = " (<b>" + viewerCount + "</b><i class='fas fa-user' style='color:black;font-size:18px;'></i>)";
 				} else {
 					// hide the counter while offline
 					viewerLabelSmall.innerHTML = "";
@@ -73,21 +77,36 @@ function updateStatus()
 			{
 				// When the live stream starts, show the video player
 				if(lastLiveStatus === "inactive" && liveStatus === "active") {
-					playerBox.innerHTML = "<video id='live-player' class='video-js vjs-default-skin' controls autoplay width='1280' height='720' poster='poster.png'></video>";
+					playerBox.innerHTML = "<video-js id='live-player' class='video-js vjs-default-skin vjs-big-play-centered' poster='poster.png'></video-js>";
 
-					var player = videojs("live-player", {liveui: true});
-					player.src({type: 'application/x-mpegURL', src: streamUrl});
+					// create the video JS live player and make it fluid
+					var player = videojs("live-player", {
+						liveui: true,
+						controls: true,
+						autoplay: true,
+						preload: 'auto'
+					});
 					player.fluid(true);
+					player.src({type: 'application/x-mpegURL', src: streamUrl});
+					var qualityLevels = player.qualityLevels();
+					
+					// output detected quality levels to the console
+					console.log(qualityLevels);
+
 					player.on('ready', function() {
 						this.addClass('my-example');
+						player.hlsQualitySelector({ 
+							displayCurrentQuality: true,
+						});
 					});
+
 					console.log("live stream just started");
 				}
 				// when the live stream ends, hide the video player
 				if(lastLiveStatus === "active" && liveStatus === "inactive") {
 					var player = videojs("live-player", {liveui: true});
 					player.dispose();
-					playerBox.innerHTML = "<br><H1>Sendepause</H1><br>";
+					playerBox.innerHTML = "<p><H1>Sendepause</H1></p><p><H3>" + newsText + "</H3></p>";
 					console.log("live stream just stopped");
 				}
 			}

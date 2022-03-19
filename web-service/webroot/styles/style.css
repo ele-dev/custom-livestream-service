@@ -4,33 +4,104 @@
 
 body {
 	background-color: white;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: 'SFMono-Regular', 'Segoe UI', Tahoma, Verdana, sans-serif;
 }
 
-table {
-	width: 70%;
+/* link elements */
+a:link, a:visited {
+	color: purple;
+	text-decoration: none;
 }
 
-th {
+a:hover, a:active {
+	color: purple;
+	text-decoration: underline;
+}
+
+/* container around the clip list */
+
+#video-list {
+	padding: 10px;
+}
+
+#admin-video-list {
+	padding: 10px;
+}
+
+.video-list-container {
+	width: 95%;
+	overflow: auto;
+
+	box-shadow: 4px 4px 5px rgb(140, 140, 140);
+	border-top: solid 1px rgb(250, 250, 250);
+}
+
+/* video list table styling */
+#video-list-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#video-list-table th {
+	background-color: rgb(240, 240, 240);
 	border-bottom: solid 2px black;
+	height: 3.4em;
 }
 
-th, td {
+#video-list-table td {
+	height: 2.7em;
+}
+
+#video-list-table th, #video-list-table td {
 	text-align: center;
 	color: black;
-	min-width: 10em;
-	height: 2.5em;
+	min-width: 7em;
 }
 
-tr.white {
-	background-color: white;
-	border-bottom: 1px solid black;
+#video-list-table tr.white {
+	background-color: rgb(240, 240, 240);
 }
 
-tr.grey {
-	background-color: lightgrey;
+#video-list-table tr.grey {
+	background-color: rgb(200, 200, 200);
 }
 
+#video-list-table tr:hover {
+	background-color: rgb(170, 170, 170);
+}
+
+/* icon styling */
+
+.fas {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
+
+a .fas:hover {
+	text-shadow: 3px 3px 5px rgb(100, 100, 100);
+}
+
+/* the top bar */
+
+#menuBar {
+	overflow: auto;
+}
+
+/* element of the main menu bar at the top */
 .menuBarElement {
 	margin: 1em;
+}
+
+#news {
+	margin: 1em;
+}
+
+/* logout button */
+
+
+/* the footer */
+.footer {
+	background-color: white;
+	text-align: center;
+	padding: 10px;
 }

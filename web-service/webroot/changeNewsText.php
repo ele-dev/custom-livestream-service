@@ -14,10 +14,10 @@
         unset($_SESSION['watching']);
     }
 
-    // do the session tracking
-    require_once 'php/sessionTracker.php';
-   
-    // update the session tracker 
+	// do the session tracking
+	require_once 'php/sessionTracker.php';
+	
+    // update the session tracker
 	updateTracker(isset($_SESSION['watching']), session_id());
 
     require_once 'php/config.php';
@@ -25,19 +25,13 @@
     $statusLabel = "";
 
     // check for the POST parameters of the formular
-    if(isset($_POST['oldPwd']) && isset($_POST['newPwd']) && isset($_POST['newPwdRepeat'])) {
-        if($_POST['newPwd'] === $_POST['newPwdRepeat']) {
-            // call the procedure to change the admin password
-            $result = EnvGlobals::changePassword($_POST['oldPwd'], $_POST['newPwd']);
-            if(!$result) {
-                $statusLabel = "Passwort konnte nicht geändert werden!";
-            } else {
-                $statusLabel = "Passwort wurde erfolgreich geändert";
-            }
-        }
-        else 
-        {
-            $statusLabel = "Die Felder Neues Passwort und Passwort Wiederholen sind nicht identisch!";
+    if(isset($_POST['newText'])) {
+        // call the procedur to change the news text
+        $result = EnvGlobals::changeNewsText($_POST['newText']);
+        if(!$result) {
+            $statusLabel = "Unbekannter Fehler: Der Lauftext konnte nicht geändert werden!";
+        } else {
+            $statusLabel = "Der Anzeige Text wurde erfolgreich geändert.";
         }
     }
 ?>
@@ -58,22 +52,19 @@
     <body>
         <p><a href="php/backToList.php">Zurück zu den Aufnahmen</a></p>
 
-        <H2>Ändern sie das Passwort für die Verwaltungsseite</H2>
-            
+        <H2>Ändern sie den Lauftext der bei Aktuell angezeigt wird</H2>
+
+        <H4><p>Hier können Info Texte eingestellt werden</p></H4>
+        
+        <br>
         <center>
-            <!-- password change formular -->
             <div class="styled-form">
+                <!-- news text editor formuar -->
                 <form action="" method="post">
-                    <p><label for="oldPwd">Aktuelles Passwort</label></p>
-                    <p><input type="password" name="oldPwd" id="oldPwd"></p>
+                    <p><label for="newText">Neuen Lauftext eingeben</label></p>
+                    <p><input type="text" name="newText" id="newText" value="<?= EnvGlobals::getNewsText(); ?>"></p>
                     
-                    <p><label for="newPwd">Neues Passwort</label></p>
-                    <p><input type="password" name="newPwd" id="newPwd"></p>
-                    
-                    <p><label for="newPwdRepeat">Neues Passwort wiederholen</label></p>
-                    <p><input type="password" name="newPwdRepeat" id="newPwdRepeat"></p>
-                    
-                    <input type="submit" value="Passwort Ändern">
+                    <input type="submit" value="Lauftext Anzeige Ändern">
                 </form>
 
                 <!-- status label -->

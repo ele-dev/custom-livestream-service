@@ -5,6 +5,7 @@ services:
         restart: always
         volumes:
             - recordings:/var/www/html/videos
+            - uploads:/mnt/uploads
         networks:
             - default
             - dmz_net
@@ -25,7 +26,7 @@ services:
         networks:
             - default
     ingest:
-        image: eledev/stream-ingest:latest
+        build: ./ingestion-service
         restart: always
         volumes:
             - recordings:/mnt/recordings
@@ -40,7 +41,7 @@ services:
         build: ./fileupload-service
         restart: always
         volumes:
-            - recordings:/home/admin
+            - uploads:/home/admin
         ports:
             - "2221:22"
         networks:
@@ -49,6 +50,7 @@ services:
             
 volumes:
     recordings:
+    uploads:
 
 networks:
     dmz_net:

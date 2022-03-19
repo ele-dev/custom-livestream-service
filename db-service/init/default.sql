@@ -34,7 +34,7 @@ CREATE TABLE `tbl_envVar` (
 
 LOCK TABLES `tbl_envVar` WRITE;
 /*!40000 ALTER TABLE `tbl_envVar` DISABLE KEYS */;
-INSERT INTO `tbl_envVar` VALUES ('admin-user','admin'),('admin-pass-hash','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'),('hls-url','http://<hostIP>:8082/hls/test.m3u8');
+INSERT INTO `tbl_envVar` VALUES ('admin-user','admin'),('admin-pass-hash','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'),('hls-url','http://<hostIP>:8082/hls/stream.m3u8');
 /*!40000 ALTER TABLE `tbl_envVar` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

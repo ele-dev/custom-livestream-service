@@ -23,6 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/style.css" />
 		<link rel="stylesheet" href="styles/video-js.min.css" />
 		<link rel="stylesheet" type="text/css" href="styles/player.css" />
+		<link rel="stylesheet" type="text/css" href="styles/videojs-hls-quality-selector.css" />
 		<!-- external script required to use the fontawsome icon pack (ver. 5) --> 
 		<script src="https://kit.fontawesome.com/48d181da71.js" crossorigin="anonymous"></script>
 	</head>
@@ -49,24 +50,26 @@
 				// Only show video player when live stream is active (detected by an existing HLS playlist file .m3u8)
 				if(EnvGlobals::isLive() == true) {
 					// show a loading spinner until the actual video player shows up
-					echo "<i id='loadingSpinner' class='fas fa-spinner' style='color:#089bcc;font-size:115px;'></i>";
+					echo "<i id='loadingSpinner' class='fas fa-spinner'></i>";
 				} else {
 					// tell the user that the live stream is offline at the moment
 					echo "<H1>Sendepause</H1>";
+					echo "<p><H3>" . EnvGlobals::getNewsText() . "</H3></p>";
 				}
 			?>
 		</div>
-
-		<!-- execute script for dynamic content update functionality -->
-		<script src="js/status.js"></script>
 
 		<!-- include footer with impressum link and more -->
 		<?php require_once 'php/footer.php'; ?>
 
 		</center>
 		
-		<!-- execute scripts for dynamic content update functionality and the videoJS lib -->
+		<!-- video JS framework and plugins --> 
 		<script src="video.min.js"></script>
+		<script src="videojs-contrib-quality-levels.min.js"></script>
+		<script src="videojs-hls-quality-selector.min.js"></script>
+
+		<!-- execute scripts for dynamic content update functionality -->
 		<script src="js/status.js"></script>
 		<script src="js/session.js"></script>
 

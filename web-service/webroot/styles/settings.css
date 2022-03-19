@@ -1,0 +1,59 @@
+/* styled forms */
+.styled-form {
+    width: 90%;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: rgb(190, 190, 190);
+
+    text-align: left;
+}
+
+.styled-form input[type=text], input[type=password] {
+    width: 100%;    
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.styled-form input[type=date], .styled-form input[type=time] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid grey;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.styled-form input[type=submit] {
+    width: 100%;
+    border-radius: 4px;
+    padding: 14px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+/* hover event */
+.styled-form input[type=submit]:hover {
+    border: 1px solid black;
+}
+
+#clip-info {
+    padding: 5px;    
+}
+
+/* for laptops and desktops */ 
+@media screen and (min-width: 768px)  
+{
+    .styled-form {
+        width: 30%;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: rgb(190, 190, 190);
+    
+        text-align: left;
+    }
+}
+
