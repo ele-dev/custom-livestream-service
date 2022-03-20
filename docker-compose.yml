@@ -6,6 +6,7 @@ services:
         volumes:
             - recordings:/var/www/html/videos
             - uploads:/mnt/uploads
+        hostname: stream-webHost
         networks:
             - default
             - dmz_net
@@ -34,6 +35,7 @@ services:
             - "1935:1935"
         expose:
             - "1935"
+        hostname: stream-ingestHost
         networks:
             - default
             - dmz_net
