@@ -4,7 +4,7 @@ services:
         build: ./web-service
         restart: always
         volumes:
-            - recordings:/var/www/html/videos
+            - recordings:/mnt/recordings
             - uploads:/mnt/uploads
         networks:
             - default
