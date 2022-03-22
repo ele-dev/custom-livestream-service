@@ -13,11 +13,13 @@
         exit;
     }
 
+    require_once "config.php";
+
     // Attempt to delete the video file(s)
-    if(!unlink($_SERVER['DOCUMENT_ROOT'] . "/videos/" . htmlspecialchars($_GET['file']))) {
+    if(!unlink(EnvGlobals::getVideoDir() . htmlspecialchars($_GET['file']))) {
         echo "<p>Failed to delete file at videos/" . $_GET['file'] . "</p>";
     } else {
-        unlink($_SERVER['DOCUMENT_ROOT'] . "/videos/" . pathinfo($_GET['file'], PATHINFO_FILENAME) . ".flv");
+        unlink(EnvGlobals::getVideoDir() . pathinfo($_GET['file'], PATHINFO_FILENAME) . ".flv");
         echo "<p>Deleted " . $_GET['file'] .  " successfully</p>";
 
         // Go back to admin panel after successful deletion

@@ -20,7 +20,7 @@
     // update the session tracker 
     updateTracker(isset($_SESSION['watching']), session_id());
 
-    // require_once 'php/config.php';
+    require_once 'php/config.php';
     require_once 'php/videoClipClass.php';
 
     $statusLabel = "";
@@ -42,7 +42,7 @@
             // ...
     
             // attempt to rename and move the prepared uploaded file 
-            $result = rename("/mnt/uploads/" . htmlspecialchars($_POST['videoFile']), $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $newFilename);
+            $result = rename(EnvGlobals::getUploadDir() . htmlspecialchars($_POST['videoFile']), EnvGlobals::getVideoDir() . $newFilename);
             if(!$result) {
                 $statusLabel = "<p>Fehler beim veschieben der Video Datei!</p>";
             } else {
@@ -57,7 +57,7 @@
     function displayRecordingsForUpload() 
     {
         // Get the list of mp4 video files in the upload directory
-        $uploaded = glob("/mnt/uploads/*.mp4");
+        $uploaded = glob(EnvGlobals::getUploadDir() . "*.mp4");
 
         // Display all options in the HTML form
         for($i = 0; $i < count($uploaded); $i++)

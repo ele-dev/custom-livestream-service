@@ -31,7 +31,7 @@
     }
 
     // check the existence of the video file and create video file object
-    $result = glob("videos/" . $_GET['file']);
+    $result = glob(EnvGlobals::getVideoDir() . $_GET['file']);
     if($result == false || count($result) == 0) {
         header("Location: admin.php");
         exit;

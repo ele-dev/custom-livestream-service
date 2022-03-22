@@ -12,6 +12,9 @@
         private static $media_http_url = "unset";
         private static $news_text_line = "unset";
 
+        private static $video_dir = "/mnt/recordings/";
+        private static $upload_dir = "/mnt/uploads/";
+
 	    // For production deploy (behind reverse proxy)
         // private static $hls_http_stream = "https://<subdomain>.<domain>:8443/hls/stream.m3u8";
         private static $vid_player_width = 1280;
@@ -85,6 +88,16 @@
             }
 
             return self::$media_http_url;
+        }
+
+        public static function getVideoDir() 
+        {
+            return self::$video_dir;
+        }
+
+        public static function getUploadDir()
+        {
+            return self::$upload_dir;
         }
 
         public static function getNewsText()
