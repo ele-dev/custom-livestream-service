@@ -20,4 +20,7 @@ RUN rm /var/www/html/index.html
 RUN mkdir /mnt/uploads
 RUN chmod a+wr /mnt/uploads
 
+RUN mkdir /mnt/recordings
+RUN chmod a+wr /mnt/recordings
+
 CMD ["usr/sbin/apache2ctl", "-D", "FOREGROUND"]

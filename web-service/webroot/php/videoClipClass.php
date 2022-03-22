@@ -5,6 +5,8 @@
         and it's relevant attributes
     */
 
+    require_once "config.php";
+
     class VideoClip
     {
         // Static properties
@@ -56,12 +58,12 @@
             $updatedFlvFileName = $temp[0] . "." . date("d-m-Y", strtotime($newDate)) . "." . $temp[2] . ".flv";
 
             // attempt to rename files (mp4 and flv file)
-            $result = rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . $this->filename, $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedMp4FileName);
+            $result = rename(EnvGlobals::getVideoDir() . $this->filename, EnvGlobals::getVideoDir() . $updatedMp4FileName);
             if(!$result) {
                 return false;
             } else {
                 // Try the potential flv too
-                rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . pathinfo($this->filename, PATHINFO_FILENAME) . ".flv", $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedFlvFileName);
+                rename(EnvGlobals::getVideoDir() . pathinfo($this->filename, PATHINFO_FILENAME) . ".flv", EnvGlobals::getVideoDir() . $updatedFlvFileName);
             }
 
             return true;
@@ -88,12 +90,12 @@
             $updatedFlvFileName = $temp[0] . "." . $temp[1] . "." . str_replace(":", "-", $newTime) . ".flv";
 
             // attempt to rename files (mp4 and flv file)
-            $result = rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . $this->filename, $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedMp4FileName);
+            $result = rename(EnvGlobals::getVideoDir() . $this->filename, EnvGlobals::getVideoDir() . $updatedMp4FileName);
             if(!$result) {
                 return false;
             } else {
                 // Try the potential flv too
-                rename($_SERVER['DOCUMENT_ROOT'] . "/videos/" . pathinfo($this->filename, PATHINFO_FILENAME) . ".flv", $_SERVER['DOCUMENT_ROOT'] . "/videos/" . $updatedFlvFileName);
+                rename(EnvGlobals::getVideoDir() . pathinfo($this->filename, PATHINFO_FILENAME) . ".flv", EnvGlobals::getVideoDir() . $updatedFlvFileName);
             }
 
             return true;
@@ -168,8 +170,8 @@
                         . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
                         . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                         . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
-                        <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
-                        . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                        <td><a href='php/download.php?file=" . $clip->getFilename() 
+                        . "'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
                         // only visible to privileged people (admins)
                         if($privileged) {
                             // delete option
@@ -186,8 +188,8 @@
                     . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
                     . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                     . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
-                    <td><a href='" . htmlspecialchars("videos/" . $clip->getFilename()) 
-                    . "' download='video'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                    <td><a href='php/download.php?file=" . $clip->getFilename()
+                    . "'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
                     // only visible to privileged people (admins)
                     if($privileged) {
                         // delete option

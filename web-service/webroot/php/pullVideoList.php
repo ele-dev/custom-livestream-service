@@ -22,7 +22,7 @@
 		echo "</tr>";
 
 		// Create the list of available video clips
-		VideoClip::createClipList("/var/www/html/videos/*.mp4");
+		VideoClip::createClipList(EnvGlobals::getVideoDir() . "*.mp4");
 
 		// sort the list
 		VideoClip::sortClips();

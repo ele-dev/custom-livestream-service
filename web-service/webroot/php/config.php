@@ -9,10 +9,14 @@
     class EnvGlobals
     {
         private static $hls_http_stream = "unset";
+        private static $media_http_url = "unset";
         private static $news_text_line = "unset";
 
+        private static $video_dir = "/mnt/recordings/";
+        private static $upload_dir = "/mnt/uploads/";
+
 	    // For production deploy (behind reverse proxy)
-        // private static $hls_http_stream = "https://<subdomain>.<domain>:4434/hls/stream.m3u8";
+        // private static $hls_http_stream = "https://<subdomain>.<domain>:8443/hls/stream.m3u8";
         private static $vid_player_width = 1280;
         private static $vid_player_height = 720;
         private static $db_host = "dbHost";
@@ -72,6 +76,28 @@
             }
 
             return self::$hls_http_stream;
+        }
+
+        public static function getMediaUrl()
+        {
+            // If the media URL isn't set yet then construct it based on the HLS url
+            if(self::$media_http_url == "unset") {
+                $url = self::getStreamUrl();
+                $temp = explode("/", $url);
+                self::$media_http_url = $temp[0] . "/" . $temp[1] . "/" . $temp[2] . "/recordings/";
+            }
+
+            return self::$media_http_url;
+        }
+
+        public static function getVideoDir() 
+        {
+            return self::$video_dir;
+        }
+
+        public static function getUploadDir()
+        {
+            return self::$upload_dir;
         }
 
         public static function getNewsText()
