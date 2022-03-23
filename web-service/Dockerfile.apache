@@ -12,8 +12,7 @@ ENV TZ="Europe/Berlin"
 # Expose the webserver port
 EXPOSE 80
 
-# Copy the webroot into the image and delete default examle page
-COPY webroot/ /var/www/html
+# delete default examle page
 RUN rm /var/www/html/index.html
 
 # create folder for volume mount and grant permissions
