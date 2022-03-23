@@ -41,13 +41,13 @@
     // record date
     if(isset($_POST['recordDate'])) {
         // rename the video file to match the new record date
-        echo "<p>new date was passed: " . $_POST['recordDate'] . "</p>";
+        // echo "<p>new date was passed: " . $_POST['recordDate'] . "</p>";
         $result = $videoFile->changeRecordDate($_POST['recordDate']);
         if(!$result) {
             echo "<p>Fehler: Aufnahme Datum konnte nicht geändert werden!</p>";
         } else {
             echo "<p>Aufnahme Datum wurde erfolgreich geändert</p>";
-            header("Location: admin.php");
+            header('Location: admin.php');
             exit;
         }
     }
@@ -55,13 +55,13 @@
     // record time
     if(isset($_POST['recordTime'])) {
         // rename the video file to match the new recod time
-        echo "<p>new time was passed: " . $_POST['recordTime'] . "</p>";
+        // echo "<p>new time was passed: " . $_POST['recordTime'] . "</p>";
         $result = $videoFile->changeRecordTime($_POST['recordTime']);
         if(!$result) {
             echo "<p>Fehler: Aufnahme Uhrzeit konnte nicht geändert werden!</p>";
         } else {
             echo "<p>Aufnahme Uhrzeit wurde erfolgreich geändert</p>";
-            header("Location: admin.php");
+            header('Location: admin.php');
             exit;
         }
     }

@@ -7,14 +7,16 @@
 
     require_once "config.php";
 
-    // ini_set("allow_url_fopen", true);
-
     $file = EnvGlobals::getVideoDir() . htmlspecialchars($_GET["file"]);
     var_dump($file);
     if (file_exists($file)) {
+        $mimeType = mime_content_type($file);
+        var_dump($mimeType);
         header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+        if($mimeType != false) {
+            header('Content-Type: ' . $mimeType);
+        }
+        header('Content-Disposition: attachment; filename=video.mp4');
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
