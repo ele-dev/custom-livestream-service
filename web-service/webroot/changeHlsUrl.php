@@ -1,7 +1,7 @@
-<!DOCTYPE HTML>
-
 <?php
-    session_start();
+    if(empty(session_id())) {
+		session_start();
+	}
 
     // Prevent unauthorized access
 	if(!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
@@ -44,6 +44,8 @@
         }
     }
 ?>
+
+<!DOCTYPE HTML>
 
 <html lang="de">
 

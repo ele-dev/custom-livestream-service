@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-
 <?php 
-	session_start();
+	if(empty(session_id())) {
+		session_start();
+	}
 
     // reset the active viewer marker
     if(isset($_SESSION['watching'])) {
@@ -14,6 +14,8 @@
 	// update the session tracker 
 	updateTracker(isset($_SESSION['watching']), session_id());
 ?>
+
+<!DOCTYPE HTML>
 
 <html lang="de">
 
