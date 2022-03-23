@@ -6,10 +6,21 @@ services:
         volumes:
             - recordings:/mnt/recordings
             - uploads:/mnt/uploads
+            - ./web-service/default.conf:/etc/nginx/conf.d/default.conf
+            - ./web-service/webroot:/var/www/html
         hostname: stream-webHost
         networks:
             - default
             - dmz_net
+        links:
+            - php-fpm
+    php-fpm:
+        build: ./php-fpm
+        restart: always
+        volumes:
+            - recordings:/mnt/recordings
+            - uploads:/mnt/uploads
+            - ./web-service/webroot:/var/www/html
     db:
         build: ./db-service
         restart: always
