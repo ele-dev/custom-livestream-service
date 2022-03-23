@@ -6,6 +6,8 @@
         using static functions
     */
 
+    error_reporting(E_ERROR);
+
     class EnvGlobals
     {
         private static $hls_http_stream = "unset";

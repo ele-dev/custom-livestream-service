@@ -38,7 +38,9 @@
 		<!-- status bar at the top left to monitor the live stream status -->
 		<p id="status-bar">
 			<span class="menuBarElement">
-				<?php 
+				<?php
+					error_reporting(E_ERROR);
+					
 					require_once 'php/config.php';
 					if(EnvGlobals::isLive()) {
 						echo "<a href='live.php'><i id='live-indicator' class='fas fa-broadcast-tower' style='color:green;font-size:25px;'></i></a>";

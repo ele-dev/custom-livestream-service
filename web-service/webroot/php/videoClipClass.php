@@ -51,7 +51,7 @@
             }
 
             // udpated the class member
-            $this->dateStr = date("d.m.Y", $newDate);
+            $this->dateStr = date("d.m.Y", strtotime($newDate));
 
             // construct new filenames based on the new record date
             $updatedMp4FileName = $temp[0] . "." . date("d-m-Y", strtotime($newDate)) . "." . $temp[2] . ".mp4";

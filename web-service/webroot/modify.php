@@ -48,6 +48,7 @@
         } else {
             echo "<p>Aufnahme Datum wurde erfolgreich geändert</p>";
             header("Location: admin.php");
+            exit;
         }
     }
 
