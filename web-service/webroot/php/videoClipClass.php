@@ -170,8 +170,8 @@
                         . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
                         . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                         . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
-                        <td><a href='php/download.php?file=" . $clip->getFilename() 
-                        . "'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                        <td><a href='media/" . $clip->getFilename() . "' download='video.mp4'>
+                        <i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
                         // only visible to privileged people (admins)
                         if($privileged) {
                             // delete option
@@ -188,8 +188,8 @@
                     . $clip->getRecordDate() . "</td><td>" . $clip->getRecordTime() . "</td><td>" 
                     . $clip->getFilesize() . " MB</td><td><a href='player.php?name=" . $clip->getFilename()
                     . "'><i class='fas fa-play-circle' style='color:black;font-size:23px;'></i></a></td>
-                    <td><a href='php/download.php?file=" . $clip->getFilename()
-                    . "'><i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
+                    <td><a href='media/" . $clip->getFilename() . "' download='video.mp4'>
+                    <i class='fas fa-download' style='color:black;font-size:23px;'></i></a></td>";
                     // only visible to privileged people (admins)
                     if($privileged) {
                         // delete option
