@@ -159,6 +159,11 @@
 
         public static function printClipList($privileged)
         {
+            // skip if list is empty
+            if(empty(self::$clipList)) {
+                return;
+            }
+
             for($i = 0; $i < count(self::$clipList); $i++)
             {
                 // Get current clip
@@ -207,6 +212,11 @@
 
         public static function sortClips()
         {
+            // skip if list is empty
+            if(empty(self::$clipList)) {
+                return;
+            }
+
             // Sort the clips in the list by the date and time of recording (using bubble sort)
             do 
             {
