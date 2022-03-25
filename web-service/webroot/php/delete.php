@@ -19,10 +19,10 @@
 
     // Attempt to delete the video file(s)
     if(!unlink(EnvGlobals::getVideoDir() . htmlspecialchars($_GET['file']))) {
-        echo "<p>Failed to delete file at videos/" . $_GET['file'] . "</p>";
+        echo "<p>" . $_GET['file'] . " konnte nicht gelöscht werden!</p>";
     } else {
         unlink(EnvGlobals::getVideoDir() . pathinfo($_GET['file'], PATHINFO_FILENAME) . ".flv");
-        echo "<p>Deleted " . $_GET['file'] .  " successfully</p>";
+        echo "<p>" . $_GET['file'] .  " wurde erfolgreich gelöscht.</p>";
 
         // Go back to admin panel after successful deletion
         header("Location: ../admin.php");
