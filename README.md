@@ -2,7 +2,7 @@
 A docker-compose software stack for a self hosted live streaming service that allows RTMP ingestion, HLS live delivery, live video recording, clip uploads and more
 
 # configuration
-The login credentials for the remote SFTP file access must be set in the Dockerfile inside the file-access-service directory before first deploy.
+The login credentials for the remote SFTP file access must be set in the Dockerfile inside the fileUpload-service directory before first deploy.
 All other global configuration variables are stored in the database and should be configured in the admin web panel after the first deploy
 config variables:
   - HLS URL (correct access url to the hls segments for live playback)
