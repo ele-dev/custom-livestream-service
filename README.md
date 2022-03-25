@@ -2,25 +2,29 @@
 A docker-compose software stack for a self hosted live streaming service that allows RTMP ingestion, HLS live delivery, live video recording, clip uploads and more
 
 # configuration
-In order to get the software working properly you need to check the config.php file in the web-service/webroot/php directory.
-There you must set the correct IP address or Domain of your machine before your run the application. <br />
-For a simple test instance you might use the internal (e.g. 192.168.1.xxx) or even localhost (127.0.0.1) IP address. <br />
-For a production system, a domain with an A Record to your public IP address should be entered here. <br />
-
-Furthermore, admin username and password for the management panel should be configured in
-the same file.
+The login credentials for the remote SFTP file access must be set in the Dockerfile inside the file-access-service directory before first deploy.
+All other global configuration variables are stored in the database and should be configured in the admin web panel after the first deploy
+config variables:
+  - HLS URL (correct access url to the hls segments for live playback)
+  - admin login password (default is 123456)
 
 # deployment 
 This software stack requires docker and docker-compose to be installed on the target system.
 It should be mentioned that it is designed to be deployed behind a Reverse Proxy that can
 handle SSL Termination. So no certificate management or encryption at all is implemented here.
+Also make sure that the service ports (see below) aren't used by other applications or being blocked by a firewall
+
+Create docker network (relevant for deployment with reverse proxy)
+```shell
+docker network create dmz_net
+```
 
 Build the application with:
 ```shell
 docker-compose build 
 ```
 
-Then run it in background with:
+Then run it in background with (run reverse proxy after this application if used):
 ```shell
 docker-compose up -d 
 ```
@@ -30,10 +34,9 @@ Stop it with:
 docker-compose down
 ```
 
-By default the ports are configured as follows
-  - 1935: RTMP ingestion
-  - 8080: web application 
-  - 8082 (4434 for https behind reverse proxy): direct playback of HLS video feed (e.g. with VLC media player)
-  - 2221: SFTP File access to the recorded video clips
+By default the service ports are configured as follows
+  - 1935: RTMP video ingestion (H264 video + ACC audio)
+  - 8080: Front End Web application 
+  - 8082 (8443 for https behind reverse proxy): HLS video segments and Video on Demand delivery
+  - 2221: SFTP File access to upload recorded MP4 videos
   
-
