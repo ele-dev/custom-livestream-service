@@ -35,7 +35,7 @@ docker-compose down
 ```
 
 By default the service ports are configured as follows
-  - 1935: RTMP video ingestion (H264 video + ACC audio)
+  - 1935: RTMP video ingestion (H264 video + AAC audio)
   - 8080: Front End Web application 
   - 8082 (8443 for https behind reverse proxy): HLS video segments and Video on Demand delivery
   - 2221: SFTP File access to upload recorded MP4 videos
