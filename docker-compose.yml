@@ -28,10 +28,10 @@ services:
             - ./db-service/init:/docker-entrypoint-initdb.d
             - ./db-service/db:/var/lib/mysql
         environment:
-            MYSQL_USER: dbUser
-            MYSQL_PASSWORD: db-pass
-            MYSQL_DATABASE: testDB
-            MYSQL_ROOT_PASSWORD: root-pass
+            MYSQL_USER: "dbUser"
+            MYSQL_PASSWORD: "})U<V-&2X+mg8%~w"
+            MYSQL_DATABASE: "mainDB"
+            MYSQL_ROOT_PASSWORD: "root-pass"
         expose:
             - "3306"
         hostname: dbHost
