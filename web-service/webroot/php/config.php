@@ -23,8 +23,8 @@
         private static $vid_player_height = 720;
         private static $db_host = "dbHost";
         private static $db_user = "dbUser";
-        private static $db_pass = "db-pass";
-        private static $db_databaseName = "testDB";
+        private static $db_pass = "})U<V-&2X+mg8%~w";
+        private static $db_databaseName = "mainDB";
         private static $viewerSessionLifetime = 20;         // after 20s viewer session outdated
 
         public static function getDBConnection() 
