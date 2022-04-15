@@ -8,8 +8,7 @@ var playerBox = document.getElementById("player-box");
 var refreshIntervallMs = 5000;
 var videoListIntervall = 12000;
 window.setInterval(updateStatus, refreshIntervallMs);
-window.setInterval(updateVideoList, videoListIntervall)
-window.addEventListener("unload", closeUp);
+window.setInterval(updateVideoList, videoListIntervall);
 window.addEventListener("pagehide", closeUp);
 window.addEventListener("pageshow", function() {
     window.setInterval(updateStatus, refreshIntervallMs);

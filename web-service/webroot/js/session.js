@@ -3,7 +3,6 @@
 // Set the auto refresh settings
 var refreshIntervallMs = 8000;
 window.setInterval(activeSessionSignal, refreshIntervallMs);
-window.addEventListener("unload", closeUp);
 window.addEventListener("pagehide", closeUp);
 window.addEventListener("pageshow", function() {
     window.setInterval(activeSessionSignal, refreshIntervallMs);
