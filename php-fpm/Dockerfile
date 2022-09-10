@@ -6,6 +6,9 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli 
 # set the correct timezone
 ENV TZ="Europe/Berlin"
 
+# also configure php time
+RUN printf '[PHP]\ndate.timezone = "Europe/Berlin"\n' > /usr/local/etc/php/conf.d/tzone.ini
+
 # create folder for volume mount and grant permissions
 RUN mkdir /mnt/uploads
 RUN chmod a+wr /mnt/uploads
